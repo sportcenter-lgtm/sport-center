@@ -10,6 +10,7 @@ import autoTable from 'jspdf-autotable';
 
 
 const API_URL = config.API_URL;
+axios.defaults.headers.common['Bypass-Tunnel-Reminder'] = 'true';
 
 function MakeupSchedulerPage() {
     console.log("MakeupSchedulerPage mounting...");
