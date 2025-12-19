@@ -32,6 +32,7 @@ function MakeupSchedulerPage() {
     const [showOnlyMakeup, setShowOnlyMakeup] = useState(false);
     const [playerSearchQuery, setPlayerSearchQuery] = useState('');
     const [showMonthSummary, setShowMonthSummary] = useState(false);
+    const [showQuickBooking, setShowQuickBooking] = useState(false);
 
     // Roster Management
     const [rosterMenu, setRosterMenu] = useState(null); // { player, classId, cls }
@@ -337,10 +338,7 @@ function MakeupSchedulerPage() {
         try {
             const res = await axios.get(`${API_URL}/scheduler/makeup-options/${playerId}?month=${currentMonth}`);
             setMakeupOptions(res.data);
-            // Auto-scroll to makeup section for better UX
-            setTimeout(() => {
-                document.getElementById('makeup-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 100);
+            setShowQuickBooking(true);
         } catch (error) {
             console.error("Error finding makeup options", error);
         }
@@ -356,7 +354,12 @@ function MakeupSchedulerPage() {
             alert('Makeup booked successfully!');
             fetchClasses();
             fetchPlayers();
-            handleFindMakeup(selectedPlayer); // Refresh options
+            // Don't refresh options if it's the quick booking modal, just close it
+            if (showQuickBooking) {
+                setShowQuickBooking(false);
+            } else {
+                handleFindMakeup(selectedPlayer); // Refresh options for profile view
+            }
         } catch (error) {
             alert('Failed: ' + (error.response?.data?.detail || "Unknown error"));
         }
@@ -1316,47 +1319,51 @@ function MakeupSchedulerPage() {
                                         return (
                                             <div
                                                 key={player.id}
-                                                className={`group flex justify-between p-2 rounded text-sm cursor-pointer transition-colors ${selectedPlayer === player.id ? 'bg-blue-900/30 text-blue-300 border border-blue-800' : 'hover:bg-gray-700/50 text-gray-300'}`}
-                                                onClick={() => handleFindMakeup(player.id)}
+                                                className={`group flex items-center p-2 rounded text-sm cursor-pointer transition-colors ${selectedPlayer === player.id ? 'bg-blue-900/30 text-blue-300 border border-blue-800' : 'hover:bg-gray-700/50 text-gray-300'}`}
+                                                onClick={() => {
+                                                    setSelectedPlayer(player.id);
+                                                    // Only scroll/refresh if the modal isn't opening
+                                                    handleFindMakeup(player.id);
+                                                }}
                                             >
-                                                <div className="flex-1 flex justify-between items-center">
-                                                    <div className="flex items-center gap-2">
-                                                        <span className="font-medium">{player.name}</span>
-                                                        {targetMet && (
-                                                            <span title={`Target Met: ${monthlyAttendance}/${monthlyTarget} classes`} className="text-base animate-pulse">
-                                                                🏆
-                                                            </span>
-                                                        )}
-                                                    </div>
-                                                    <div className="flex gap-2 items-center">
-                                                        <span className={`text-[10px] px-1 rounded border ${getLevelColor(player.level)}`}>Lvl {player.level}</span>
+                                                <div className="flex items-center gap-3 w-full">
+                                                    {/* Quick Action Button in FRONT */}
+                                                    {player.makeup_credits > 0 ? (
                                                         <button
                                                             onClick={(e) => {
                                                                 e.stopPropagation();
-                                                                setEditingPlayer(player);
+                                                                handleFindMakeup(player.id);
                                                             }}
-                                                            className="opacity-0 group-hover:opacity-100 p-1 hover:bg-gray-600 rounded text-gray-400 hover:text-blue-400 transition-all"
-                                                            title="Edit Student Profile"
+                                                            className="flex-shrink-0 bg-orange-600 hover:bg-orange-500 text-white w-6 h-6 flex items-center justify-center rounded-lg shadow-lg shadow-orange-950/20 transition-all hover:scale-110 active:scale-95"
+                                                            title={`Book Makeup (${player.makeup_credits} pending)`}
                                                         >
-                                                            <User size={12} />
+                                                            <Plus size={14} strokeWidth={3} />
                                                         </button>
+                                                    ) : (
+                                                        <div className="w-6 h-6 rounded-lg bg-gray-900/40 border border-gray-700/50" />
+                                                    )}
 
-                                                        {player.makeup_credits > 0 ? (
-                                                            <button
-                                                                onClick={(e) => {
-                                                                    e.stopPropagation();
-                                                                    handleFindMakeup(player.id);
-                                                                }}
-                                                                className="flex items-center gap-1 bg-orange-600 hover:bg-orange-500 text-white px-1.5 py-0.5 rounded text-[10px] font-bold shadow-sm transition-all"
-                                                                title={`Book Makeup (${player.makeup_credits} pending)`}
-                                                            >
-                                                                <Plus size={10} strokeWidth={3} />
-                                                                {player.makeup_credits}
-                                                            </button>
-                                                        ) : (
-                                                            <div className="w-6" /> /* Spacing for alignment */
-                                                        )}
+                                                    <div className="flex-1 min-w-0">
+                                                        <div className="flex items-center gap-2">
+                                                            <span className="font-bold truncate">{player.name}</span>
+                                                            {targetMet && <span className="text-sm">🏆</span>}
+                                                        </div>
+                                                        <div className="flex items-center gap-2 text-[10px] text-gray-500">
+                                                            <span className={`px-1 rounded border ${getLevelColor(player.level)}`}>Lvl {player.level}</span>
+                                                            {player.makeup_credits > 0 && <span className="text-orange-500/80 font-bold">{player.makeup_credits} Credit{player.makeup_credits > 1 ? 's' : ''}</span>}
+                                                        </div>
                                                     </div>
+
+                                                    <button
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            setEditingPlayer(player);
+                                                        }}
+                                                        className="opacity-0 group-hover:opacity-100 p-1.5 hover:bg-gray-600 rounded-lg text-gray-400 hover:text-white transition-all shadow-sm"
+                                                        title="Edit Student Profile"
+                                                    >
+                                                        <User size={14} />
+                                                    </button>
                                                 </div>
                                             </div>
                                         )
@@ -1621,6 +1628,76 @@ function MakeupSchedulerPage() {
                             >
                                 Close Report
                             </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Quick Makeup Selection Modal */}
+            {showQuickBooking && (
+                <div className="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-[70] p-4">
+                    <div className="bg-gray-800 rounded-3xl shadow-2xl border-2 border-orange-500/30 w-full max-w-xl max-h-[85vh] overflow-hidden flex flex-col">
+                        <div className="p-6 border-b border-gray-700 bg-gray-900/50 flex justify-between items-center">
+                            <div>
+                                <div className="flex items-center gap-3">
+                                    <div className="bg-orange-600 p-2 rounded-xl shadow-lg shadow-orange-950/40">
+                                        <Plus className="text-white" size={24} strokeWidth={3} />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter">Quick Book Makeup</h3>
+                                        <p className="text-orange-400 font-bold text-xs">Matching Level {players.find(p => p.id === selectedPlayer)?.level} for {players.find(p => p.id === selectedPlayer)?.name}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button
+                                onClick={() => setShowQuickBooking(false)}
+                                className="bg-gray-800 hover:bg-gray-700 p-2 rounded-full text-gray-400 hover:text-white transition-all"
+                            >
+                                <XCircle size={32} />
+                            </button>
+                        </div>
+
+                        <div className="p-6 overflow-y-auto flex-1 space-y-4">
+                            {makeupOptions.length === 0 ? (
+                                <div className="text-center py-20 bg-gray-900/40 rounded-3xl border-2 border-dashed border-gray-700">
+                                    <XCircle size={48} className="mx-auto text-gray-600 mb-4" />
+                                    <p className="text-xl font-bold text-gray-400">No available slots found.</p>
+                                    <p className="text-sm text-gray-600 mt-2">Try checking other months or regular classes.</p>
+                                </div>
+                            ) : (
+                                <div className="grid grid-cols-1 gap-4">
+                                    <p className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em]">Select an available slot:</p>
+                                    {makeupOptions.map(opt => (
+                                        <div
+                                            key={opt.id}
+                                            onClick={() => handleBookMakeup(opt.id, true)}
+                                            className="bg-gray-900 border-2 border-gray-700 p-5 rounded-2xl hover:border-orange-500 hover:bg-orange-500/5 transition-all cursor-pointer group flex justify-between items-center"
+                                        >
+                                            <div className="flex items-center gap-4">
+                                                <div className="bg-gray-800 p-3 rounded-xl border border-gray-700 group-hover:border-orange-500/50">
+                                                    <Clock className="text-blue-400 group-hover:text-orange-400" size={20} />
+                                                </div>
+                                                <div>
+                                                    <span className="text-2xl font-black text-white block leading-none">{opt.time}</span>
+                                                    <span className="text-sm font-bold text-gray-500 group-hover:text-gray-400">
+                                                        {new Date(opt.date + 'T00:00:00').toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div className="text-right">
+                                                <div className="text-[10px] font-black text-gray-600 uppercase mb-1">Coach {opt.coach || 'Unassigned'}</div>
+                                                <button className="bg-blue-600 p-2 rounded-xl text-white font-black text-xs group-hover:bg-orange-600 transition-colors">
+                                                    BOOK NOW
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="p-4 bg-gray-900/80 border-t border-gray-700 text-center">
+                            <p className="text-[10px] text-gray-500">Only classes with matching levels and available spots are shown here.</p>
                         </div>
                     </div>
                 </div>
