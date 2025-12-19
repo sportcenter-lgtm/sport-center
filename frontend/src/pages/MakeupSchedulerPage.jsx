@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Calendar, User, Clock, Users, Plus, CheckCircle, XCircle, Trash2, ArrowRight, Search, RefreshCw, Pencil, Home } from 'lucide-react';
+import { Calendar, User, Clock, Users, Plus, Minus, CheckCircle, XCircle, Trash2, ArrowRight, Search, RefreshCw, Pencil, Home } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 import config from '../config';
@@ -8,6 +8,7 @@ import config from '../config';
 const API_URL = config.API_URL;
 
 function MakeupSchedulerPage() {
+    console.log("MakeupSchedulerPage mounting...");
     const navigate = useNavigate();
     // State for Calendar & Modals
     const [players, setPlayers] = useState([]);
@@ -520,6 +521,7 @@ function MakeupSchedulerPage() {
     // Sort dates
     const sortedDates = Object.keys(groupedClasses).sort();
 
+    console.log("MakeupSchedulerPage Rendering...");
     return (
         <div className="min-h-screen bg-gray-900 text-white p-8">
             <div className="max-w-7xl mx-auto space-y-8">
@@ -1435,8 +1437,8 @@ function MakeupSchedulerPage() {
                                 <div className="mb-8">
                                     <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">Recent Attendance History</h3>
                                     <div className="flex gap-3 overflow-x-auto pb-2">
-                                        {players.find(p => p.id === selectedPlayer)?.attendance_history?.length > 0 ? (
-                                            [...players.find(p => p.id === selectedPlayer).attendance_history].reverse().slice(0, 10).map((h, i) => (
+                                        {(players.find(p => p.id === selectedPlayer)?.attendance_history || []).length > 0 ? (
+                                            [...(players.find(p => p.id === selectedPlayer)?.attendance_history || [])].reverse().slice(0, 10).map((h, i) => (
                                                 <div key={i} className="flex-shrink-0 bg-gray-900/60 border border-gray-700 px-4 py-3 rounded-xl text-center min-w-[100px]">
                                                     <div className="text-gray-300 font-bold">{new Date(h.date + 'T00:00:00').toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}</div>
                                                     <div className="text-gray-500 text-[10px] mt-1 pr-1">{h.time}</div>
@@ -1734,7 +1736,7 @@ function MakeupSchedulerPage() {
             )}
         </div>
     );
-};
+}
 
 
 export default MakeupSchedulerPage;
