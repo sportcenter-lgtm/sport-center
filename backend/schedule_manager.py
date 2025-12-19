@@ -253,9 +253,11 @@ class ScheduleManager:
         return deleted_count
 
     def delete_month_classes(self, month: str) -> int:
+        print(f"DEBUG: Deleting classes for month: {month}")
         initial_len = len(self.classes)
         self.classes = [c for c in self.classes if not c["date"].startswith(month)]
         deleted_count = initial_len - len(self.classes)
+        print(f"DEBUG: Deleted {deleted_count} classes.")
         if deleted_count > 0:
             self._save_json(self.classes, self.classes_file)
         return deleted_count
@@ -656,7 +658,7 @@ class ScheduleManager:
 
     # --- Target Management ---
     def get_target(self, month: str) -> int:
-        return self.monthly_targets.get(month, 0) # Default 0
+        return self.monthly_targets.get(month, 4) # Default 4
 
     def set_target(self, month: str, target: int):
         self.monthly_targets[month] = target

@@ -45,9 +45,9 @@ function MakeupSchedulerPage() {
     // Updated New Class State for Series
     const [newClassMode, setNewClassMode] = useState('single'); // 'single' or 'series'
     const [newClass, setNewClass] = useState({
-        date: '',
+        date: new Date().toISOString().slice(0, 10),
         time: '',
-        month: '2025-01',
+        month: new Date().toISOString().slice(0, 7),
         weekday: 'Monday',
         student_ids: [],
         coach: '',
@@ -183,17 +183,27 @@ function MakeupSchedulerPage() {
 
     const handleAddClass = async () => {
         try {
-            await axios.post(`${API_URL}/scheduler/classes/series`, {
-                month: newClass.month,
-                weekday: newClass.weekday,
-                time: newClass.time,
-                student_ids: newClass.student_ids,
-                coach: newClass.coach,
-                max_students: newClass.max_students
-            });
+            if (newClassMode === 'single') {
+                await axios.post(`${API_URL}/scheduler/classes`, {
+                    date: newClass.date,
+                    time: newClass.time,
+                    student_ids: newClass.student_ids,
+                    coach: newClass.coach,
+                    max_students: newClass.max_students
+                });
+            } else {
+                await axios.post(`${API_URL}/scheduler/classes/series`, {
+                    month: newClass.month,
+                    weekday: newClass.weekday,
+                    time: newClass.time,
+                    student_ids: newClass.student_ids,
+                    coach: newClass.coach,
+                    max_students: newClass.max_students
+                });
+            }
             setShowAddClass(false);
             // Reset form
-            setNewClass({ date: '', time: '', month: '2025-01', weekday: 'Monday', student_ids: [], coach: '', max_students: 4 });
+            setNewClass({ date: new Date().toISOString().slice(0, 10), time: '', month: currentMonth, weekday: 'Monday', student_ids: [], coach: '', max_students: 4 });
             fetchClasses();
         } catch (error) {
             console.error("Error adding class", error);
@@ -263,13 +273,16 @@ function MakeupSchedulerPage() {
     };
 
     const handleClearMonth = async () => {
+        console.log("DEBUG: Clearing month", currentMonth);
         if (!confirm(`ARE YOU SURE? This will delete EVERY class scheduled for ${currentMonth}. This cannot be undone.`)) return;
         try {
-            await axios.delete(`${API_URL}/scheduler/classes/month/${currentMonth}`);
+            const res = await axios.delete(`${API_URL}/scheduler/classes/month/${currentMonth}`);
+            console.log("DEBUG: Clear month response", res.data);
             fetchClasses();
-            alert("Month cleared.");
+            alert(`Month cleared! Deleted ${res.data.deleted_count} classes.`);
         } catch (error) {
-            alert("Failed to clear month");
+            console.error("DEBUG: Clear month error", error);
+            alert("Failed to clear month: " + (error.response?.data?.detail || error.message));
         }
     };
 
@@ -714,27 +727,53 @@ function MakeupSchedulerPage() {
                     showAddClass && (
                         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 overflow-y-auto">
                             <div className="bg-gray-800 p-6 rounded-2xl w-full max-w-md border border-gray-700 my-8">
-                                <h3 className="text-xl font-bold mb-4">Schedule Monthly Series</h3>
-                                <p className="text-xs text-gray-400 mb-4">Classes will be created for this day of the week for the entire month.</p>
+                                <div className="flex justify-between items-center mb-4">
+                                    <h3 className="text-xl font-bold">New Class</h3>
+                                    <div className="flex bg-gray-900 rounded-lg p-1 border border-gray-700">
+                                        <button
+                                            onClick={() => setNewClassMode('single')}
+                                            className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${newClassMode === 'single' ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-500 hover:text-gray-300'}`}
+                                        >
+                                            Single
+                                        </button>
+                                        <button
+                                            onClick={() => setNewClassMode('series')}
+                                            className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${newClassMode === 'series' ? 'bg-green-600 text-white shadow-lg' : 'text-gray-500 hover:text-gray-300'}`}
+                                        >
+                                            Series
+                                        </button>
+                                    </div>
+                                </div>
+                                <p className="text-xs text-gray-400 mb-6">
+                                    {newClassMode === 'single' ? 'Add a single class session on a specific date.' : 'Create a repeating class for every occurrence of a weekday in the month.'}
+                                </p>
 
                                 <div className="space-y-4">
-                                    <div className="grid grid-cols-2 gap-4">
+                                    {newClassMode === 'single' ? (
                                         <div>
-                                            <label className="block text-xs text-gray-400 mb-1">Month</label>
-                                            <input type="month" className="w-full bg-gray-900 border border-gray-600 rounded p-2"
-                                                value={newClass.month} onChange={e => setNewClass({ ...newClass, month: e.target.value })} />
+                                            <label className="block text-xs text-gray-400 mb-1">Date</label>
+                                            <input type="date" className="w-full bg-gray-900 border border-gray-600 rounded p-2"
+                                                value={newClass.date} onChange={e => setNewClass({ ...newClass, date: e.target.value })} />
                                         </div>
-                                        <div>
-                                            <label className="block text-xs text-gray-400 mb-1">Weekday</label>
-                                            <select className="w-full bg-gray-900 border border-gray-600 rounded p-2"
-                                                value={newClass.weekday} onChange={e => setNewClass({ ...newClass, weekday: e.target.value })}
-                                            >
-                                                {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(d => (
-                                                    <option key={d} value={d}>{d}</option>
-                                                ))}
-                                            </select>
+                                    ) : (
+                                        <div className="grid grid-cols-2 gap-4">
+                                            <div>
+                                                <label className="block text-xs text-gray-400 mb-1">Month</label>
+                                                <input type="month" className="w-full bg-gray-900 border border-gray-600 rounded p-2"
+                                                    value={newClass.month} onChange={e => setNewClass({ ...newClass, month: e.target.value })} />
+                                            </div>
+                                            <div>
+                                                <label className="block text-xs text-gray-400 mb-1">Weekday</label>
+                                                <select className="w-full bg-gray-900 border border-gray-600 rounded p-2"
+                                                    value={newClass.weekday} onChange={e => setNewClass({ ...newClass, weekday: e.target.value })}
+                                                >
+                                                    {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(d => (
+                                                        <option key={d} value={d}>{d}</option>
+                                                    ))}
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
+                                    )}
 
                                     <div>
                                         <label className="block text-xs text-gray-400 mb-1">Time</label>
