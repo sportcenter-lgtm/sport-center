@@ -8,7 +8,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "3483bb4b-96bb-41b3-95cb-c315ac572b8f",
@@ -19,7 +20,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "9b11db9d-8014-4b6c-9ecd-601971d1b5e5",
@@ -30,7 +32,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "1f317559-5717-44df-848f-80825be135ad",
@@ -41,7 +44,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "9c1d89e7-fff3-4425-a229-32b8d8e102aa",
@@ -52,7 +56,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "4cda6074-3732-48f5-9084-d2ba5802f4b6",
@@ -63,7 +68,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "94113620-d497-4111-9f24-ee2d46e8344b",
@@ -74,7 +80,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "7ca4078a-92a7-4124-9c7b-69ce336f82cf",
@@ -85,7 +92,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "c6d53237-1303-47a1-bfe8-ff685d0bfb56",
@@ -96,7 +104,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "df8bff04-5e07-4c67-818d-eb68f2e887bf",
@@ -107,7 +116,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "825a592e-434d-403a-9bf8-de302eed95a0",
@@ -118,7 +128,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "2a097bd8-e2bb-4efe-8ce7-132bb3794ee9",
@@ -129,7 +140,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "0b500c92-f72c-413c-93ac-a9cb9e0dd246",
@@ -140,7 +152,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "46285d5a-b7a6-4c69-9c38-882aeb9af8f0",
@@ -159,7 +172,8 @@
                 "class_id": "25692e39-3c79-45d5-93e9-b702ddd02222",
                 "coach": "Lorhan"
             }
-        ]
+        ],
+        "has_subscription": false
     },
     {
         "id": "598c462c-dbdc-46f6-9f0f-9e9c496c32bd",
@@ -170,7 +184,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "ed433768-41ca-41b8-9424-46ea357ea1c9",
@@ -181,7 +196,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "d041d7d3-d314-4289-80c9-433b6d18e5e7",
@@ -194,7 +210,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "9f97dbc4-3589-4e9e-8d03-3a9d43334ffd",
@@ -205,7 +222,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "4dcb7c25-e64a-4050-9190-21b3bbfa976a",
@@ -216,7 +234,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "5ce3555e-ba18-48ac-b5c3-99ea4f3300e9",
@@ -227,7 +246,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "7f72b14f-3420-41b5-9567-59584140166a",
@@ -238,7 +258,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "016ca0fd-1c80-4548-8b82-e4bc07b9d06b",
@@ -249,7 +270,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "67ff53a0-9b01-4a3a-9dfb-f643ee6c8061",
@@ -260,7 +282,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "d7bf69dc-b10d-4f67-b444-e7ac2b353b09",
@@ -271,7 +294,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "01112792-37eb-4eb8-9c7a-40f8f03bf55f",
@@ -282,7 +306,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "a15cc307-da93-4b06-8e53-05d8510ce32f",
@@ -293,7 +318,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "68db4d15-4eb2-47cd-8fe8-81894b789bc4",
@@ -304,7 +330,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "f9fec7a2-4bc9-4107-9a60-767ea14f16fa",
@@ -315,7 +342,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "598377cc-eb61-4103-b9de-717f883c96bd",
@@ -326,7 +354,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "f68f77e0-258b-4efd-a184-134f32518f44",
@@ -337,7 +366,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "e5be4c38-5324-4239-8634-276d3d312e01",
@@ -348,7 +378,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "e473e851-fa21-4234-bfaa-03778e45c36b",
@@ -359,7 +390,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "fc5b42ab-7a39-4bdd-81d4-3d74eeaeee9d",
@@ -370,7 +402,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "b59277f1-b416-4a51-8af5-beac6a75e784",
@@ -381,7 +414,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "b76c2fbb-ac44-4e42-bd8e-b53ec07b954b",
@@ -392,7 +426,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "7be372d4-7136-4901-82ce-02c542f074dc",
@@ -403,7 +438,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "4fc7ab01-2fe9-48a9-a6fc-c7a46a7e6498",
@@ -414,7 +450,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "b8644131-cd95-481b-be9b-705c5659deda",
@@ -425,7 +462,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "d9e7873b-402d-42e4-9297-30cca7422855",
@@ -436,7 +474,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "691f0086-5966-4089-b5d0-756628a75edc",
@@ -447,7 +486,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "f742c557-9b48-4c32-9fdd-849403ef999d",
@@ -458,7 +498,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "c5c1b25c-b679-45ba-8423-ee484d2eff66",
@@ -469,7 +510,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "cccf9158-d96e-4136-b32d-28446d99742c",
@@ -480,7 +522,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "aef7e73c-1bcb-4fc1-bab5-c6449835aba7",
@@ -491,7 +534,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "7b8015cb-22bb-43a5-bebf-1f43e7d34dd1",
@@ -504,7 +548,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "236d8eeb-fe09-4c62-b6da-883df3c33b3c",
@@ -515,7 +560,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "6749852a-ce98-4e70-b512-b4227841443d",
@@ -526,7 +572,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "8d0cbbd1-8f98-4744-ac8b-4982a474cc9e",
@@ -537,7 +584,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "996305cf-fa67-45e2-b745-d5d24941a39e",
@@ -548,7 +596,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "c9a65ed1-146b-4ffa-81d0-3b9325fb0da4",
@@ -559,7 +608,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "f86d0701-8b8e-42b3-897a-77e08ee9d31e",
@@ -570,7 +620,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "9732075f-f3cb-4e52-b803-8fc56a10b9b2",
@@ -581,7 +632,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "6f16909a-3369-43a8-98b2-aa398314284f",
@@ -592,7 +644,8 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 0
-        }
+        },
+        "has_subscription": false
     },
     {
         "id": "9fc37e99-8e1e-4c88-82ed-236b5a64cbc2",
@@ -603,6 +656,7 @@
         "stats": {
             "classes_attended": 0,
             "makeups_used": 1
-        }
+        },
+        "has_subscription": false
     }
 ]
