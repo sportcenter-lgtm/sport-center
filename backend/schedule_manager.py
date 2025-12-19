@@ -393,6 +393,17 @@ class ScheduleManager:
         self._save_json(self.players, self.players_file)
         return True
 
+    def adjust_player_credits(self, player_id: str, amount: int) -> bool:
+        player = self.get_player(player_id)
+        if not player:
+            return False
+        
+        # Ensure it doesn't go below 0
+        current = player.get("makeup_credits", 0)
+        player["makeup_credits"] = max(0, current + amount)
+        self._save_json(self.players, self.players_file)
+        return True
+
     # --- Rescheduling Logic ---
     def remove_student_from_class(self, class_id: str, player_id: str, award_credit: bool = False) -> (bool, str):
         player = self.get_player(player_id)

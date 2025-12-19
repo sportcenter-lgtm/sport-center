@@ -353,6 +353,13 @@ def update_schedule_player(player_id: str, data: PlayerUpdate):
         raise HTTPException(status_code=404, detail="Player not found")
     return {"message": "Player updated"}
 
+@app.post("/scheduler/players/{player_id}/credits")
+def adjust_player_credits_endpoint(player_id: str, amount: int):
+    success = schedule_manager.adjust_player_credits(player_id, amount)
+    if not success:
+        raise HTTPException(status_code=404, detail="Player not found")
+    return {"message": "Credits adjusted"}
+
 @app.post("/scheduler/classes/{class_id}/roster/{player_id}/remove")
 def remove_student_from_class_endpoint(class_id: str, player_id: str, data: RosterRemove):
     success, msg = schedule_manager.remove_student_from_class(class_id, player_id, data.award_credit)

@@ -33,6 +33,7 @@ function MakeupSchedulerPage() {
     const [playerSearchQuery, setPlayerSearchQuery] = useState('');
     const [showMonthSummary, setShowMonthSummary] = useState(false);
     const [showQuickBooking, setShowQuickBooking] = useState(false);
+    const [activeActionMenu, setActiveActionMenu] = useState(null); // playerId
 
     // Roster Management
     const [rosterMenu, setRosterMenu] = useState(null); // { player, classId, cls }
@@ -362,6 +363,16 @@ function MakeupSchedulerPage() {
             }
         } catch (error) {
             alert('Failed: ' + (error.response?.data?.detail || "Unknown error"));
+        }
+    };
+
+    const handleAdjustCredits = async (playerId, amount) => {
+        try {
+            await axios.post(`${API_URL}/scheduler/players/${playerId}/credits?amount=${amount}`);
+            fetchPlayers();
+            setActiveActionMenu(null);
+        } catch (error) {
+            alert("Failed to adjust credits");
         }
     };
 
@@ -1319,29 +1330,49 @@ function MakeupSchedulerPage() {
                                         return (
                                             <div
                                                 key={player.id}
-                                                className={`group flex items-center p-2 rounded text-sm cursor-pointer transition-colors ${selectedPlayer === player.id ? 'bg-blue-900/30 text-blue-300 border border-blue-800' : 'hover:bg-gray-700/50 text-gray-300'}`}
+                                                className={`group relative flex items-center p-2 rounded text-sm cursor-pointer transition-colors ${selectedPlayer === player.id ? 'bg-blue-900/30 text-blue-300 border border-blue-800' : 'hover:bg-gray-700/50 text-gray-300'}`}
                                                 onClick={() => {
                                                     setSelectedPlayer(player.id);
-                                                    // Only scroll/refresh if the modal isn't opening
                                                     handleFindMakeup(player.id);
                                                 }}
                                             >
-                                                <div className="flex items-center gap-3 w-full">
-                                                    {/* Quick Action Button in FRONT */}
-                                                    {player.makeup_credits > 0 ? (
+                                                {/* Action Menu Popover */}
+                                                {activeActionMenu === player.id && (
+                                                    <div className="absolute left-10 top-2 z-[60] bg-gray-800 border-2 border-orange-500 rounded-xl shadow-2xl p-1 flex flex-col gap-1 min-w-[120px] scale-in-center">
                                                         <button
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();
-                                                                handleFindMakeup(player.id);
-                                                            }}
-                                                            className="flex-shrink-0 bg-orange-600 hover:bg-orange-500 text-white w-6 h-6 flex items-center justify-center rounded-lg shadow-lg shadow-orange-950/20 transition-all hover:scale-110 active:scale-95"
-                                                            title={`Book Makeup (${player.makeup_credits} pending)`}
+                                                            onClick={(e) => { e.stopPropagation(); handleAdjustCredits(player.id, 1); }}
+                                                            className="flex items-center gap-2 px-3 py-2 hover:bg-orange-500/10 text-orange-400 rounded-lg transition-colors text-xs font-bold"
                                                         >
-                                                            <Plus size={14} strokeWidth={3} />
+                                                            <Plus size={14} /> Add 1 Credit
                                                         </button>
-                                                    ) : (
-                                                        <div className="w-6 h-6 rounded-lg bg-gray-900/40 border border-gray-700/50" />
-                                                    )}
+                                                        <button
+                                                            onClick={(e) => { e.stopPropagation(); handleFindMakeup(player.id); setActiveActionMenu(null); }}
+                                                            className="flex items-center gap-2 px-3 py-2 hover:bg-blue-500/10 text-blue-400 rounded-lg transition-colors text-xs font-bold"
+                                                        >
+                                                            <Search size={14} /> Book Makeup
+                                                        </button>
+                                                        <div className="border-t border-gray-700 my-1" />
+                                                        <button
+                                                            onClick={(e) => { e.stopPropagation(); setActiveActionMenu(null); }}
+                                                            className="px-3 py-1 text-center text-[10px] text-gray-500 hover:text-white"
+                                                        >
+                                                            Cancel
+                                                        </button>
+                                                    </div>
+                                                )}
+
+                                                <div className="flex items-center gap-3 w-full">
+                                                    {/* ALWAYS-VISIBLE Plus Action Button */}
+                                                    <button
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            setActiveActionMenu(activeActionMenu === player.id ? null : player.id);
+                                                        }}
+                                                        className={`flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-lg shadow-lg shadow-orange-950/20 transition-all hover:scale-110 active:scale-95 ${activeActionMenu === player.id ? 'bg-white text-orange-600' : 'bg-orange-600 hover:bg-orange-500 text-white'}`}
+                                                        title="Quick Actions"
+                                                    >
+                                                        <Plus size={14} strokeWidth={3} />
+                                                    </button>
 
                                                     <div className="flex-1 min-w-0">
                                                         <div className="flex items-center gap-2">
@@ -1350,7 +1381,13 @@ function MakeupSchedulerPage() {
                                                         </div>
                                                         <div className="flex items-center gap-2 text-[10px] text-gray-500">
                                                             <span className={`px-1 rounded border ${getLevelColor(player.level)}`}>Lvl {player.level}</span>
-                                                            {player.makeup_credits > 0 && <span className="text-orange-500/80 font-bold">{player.makeup_credits} Credit{player.makeup_credits > 1 ? 's' : ''}</span>}
+                                                            {player.makeup_credits > 0 ? (
+                                                                <span className="text-orange-500/80 font-black tracking-wider uppercase">
+                                                                    {player.makeup_credits} Makeup{player.makeup_credits > 1 ? 's' : ''}
+                                                                </span>
+                                                            ) : (
+                                                                <span className="text-gray-600 italic">0 Makeups</span>
+                                                            )}
                                                         </div>
                                                     </div>
 
