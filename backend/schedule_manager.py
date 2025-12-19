@@ -252,6 +252,14 @@ class ScheduleManager:
             self._save_json(self.classes, self.classes_file)
         return deleted_count
 
+    def delete_month_classes(self, month: str) -> int:
+        initial_len = len(self.classes)
+        self.classes = [c for c in self.classes if not c["date"].startswith(month)]
+        deleted_count = initial_len - len(self.classes)
+        if deleted_count > 0:
+            self._save_json(self.classes, self.classes_file)
+        return deleted_count
+
     def propagate_class_properties(self, source_class_id: str, match_time: str = None) -> int:
         """
         Copies time, coach, and max_students from the source class to all other classes
@@ -648,7 +656,7 @@ class ScheduleManager:
 
     # --- Target Management ---
     def get_target(self, month: str) -> int:
-        return self.monthly_targets.get(month, 8) # Default 8
+        return self.monthly_targets.get(month, 0) # Default 0
 
     def set_target(self, month: str, target: int):
         self.monthly_targets[month] = target

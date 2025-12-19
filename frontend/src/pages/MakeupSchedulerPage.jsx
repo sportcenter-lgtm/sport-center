@@ -262,6 +262,17 @@ function MakeupSchedulerPage() {
         }
     };
 
+    const handleClearMonth = async () => {
+        if (!confirm(`ARE YOU SURE? This will delete EVERY class scheduled for ${currentMonth}. This cannot be undone.`)) return;
+        try {
+            await axios.delete(`${API_URL}/scheduler/classes/month/${currentMonth}`);
+            fetchClasses();
+            alert("Month cleared.");
+        } catch (error) {
+            alert("Failed to clear month");
+        }
+    };
+
     const handleUpdateClass = async () => {
         try {
             await axios.patch(`${API_URL}/scheduler/classes/${editingClass.id}`, {
@@ -516,6 +527,13 @@ function MakeupSchedulerPage() {
                         <div className="h-8 w-px bg-gray-600 mx-2"></div>
                         <div className="flex gap-2">
                             <button
+                                onClick={handleClearMonth}
+                                className="bg-red-900/40 text-red-400 hover:bg-red-800/40 px-3 py-2 rounded-lg border border-red-900/50 flex items-center gap-2 transition-all"
+                                title="Delete All Classes in this Month"
+                            >
+                                <Trash2 size={16} />
+                            </button>
+                            <button
                                 onClick={() => setShowAddPlayer(true)}
                                 className="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg flex items-center gap-2"
                             >
@@ -530,7 +548,6 @@ function MakeupSchedulerPage() {
                             >
                                 <Plus size={18} /> New Class
                             </button>
-
                         </div>
                     </div>
                 </div>
@@ -1127,7 +1144,7 @@ function MakeupSchedulerPage() {
                     </div>
 
                     <div className="flex gap-4 min-w-max pb-4">
-                        {sortedDates.length === 0 && <p className="text-gray-500 italic">No classes scheduled. Add a class to start.</p>}
+                        {sortedDates.length === 0 && <div className="text-transparent">Placeholder for empty month</div>}
                         {sortedDates.map(date => (
                             <div key={date} className="w-64 flex-shrink-0">
                                 <div className="text-center font-bold bg-gray-700 py-2 rounded-t-lg border-b border-gray-600">

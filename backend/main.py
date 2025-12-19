@@ -408,6 +408,11 @@ def bulk_delete_classes(data: BulkDelete):
     count = schedule_manager.delete_classes(data.class_ids)
     return {"deleted_count": count}
 
+@app.delete("/scheduler/classes/month/{month}")
+def delete_month_classes(month: str):
+    count = schedule_manager.delete_month_classes(month)
+    return {"deleted_count": count}
+
 @app.get("/scheduler/makeup-options/{player_id}")
 def get_makeup_options(player_id: str, month: str = None):
     return schedule_manager.find_makeup_options(player_id, month)
