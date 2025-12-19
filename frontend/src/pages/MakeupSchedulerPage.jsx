@@ -337,6 +337,10 @@ function MakeupSchedulerPage() {
         try {
             const res = await axios.get(`${API_URL}/scheduler/makeup-options/${playerId}?month=${currentMonth}`);
             setMakeupOptions(res.data);
+            // Auto-scroll to makeup section for better UX
+            setTimeout(() => {
+                document.getElementById('makeup-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
         } catch (error) {
             console.error("Error finding makeup options", error);
         }
@@ -1336,8 +1340,21 @@ function MakeupSchedulerPage() {
                                                         >
                                                             <User size={12} />
                                                         </button>
-                                                        {player.makeup_credits > 0 && (
-                                                            <span className="text-[10px] bg-orange-900/30 text-orange-400 px-1 rounded">+{player.makeup_credits} makeup</span>
+
+                                                        {player.makeup_credits > 0 ? (
+                                                            <button
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    handleFindMakeup(player.id);
+                                                                }}
+                                                                className="flex items-center gap-1 bg-orange-600 hover:bg-orange-500 text-white px-1.5 py-0.5 rounded text-[10px] font-bold shadow-sm transition-all"
+                                                                title={`Book Makeup (${player.makeup_credits} pending)`}
+                                                            >
+                                                                <Plus size={10} strokeWidth={3} />
+                                                                {player.makeup_credits}
+                                                            </button>
+                                                        ) : (
+                                                            <div className="w-6" /> /* Spacing for alignment */
                                                         )}
                                                     </div>
                                                 </div>
@@ -1396,7 +1413,7 @@ function MakeupSchedulerPage() {
                                 </div>
 
                                 {/* Makeup Search Results */}
-                                <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 flex items-center gap-2 pt-6 border-t border-gray-700/50">
+                                <h3 id="makeup-section" className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 flex items-center gap-2 pt-6 border-t border-gray-700/50">
                                     <Clock size={14} className="text-purple-400" /> Available Makeup Slots
                                 </h3>
 
