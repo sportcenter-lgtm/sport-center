@@ -1,0 +1,11 @@
+{
+    "llorhan": {
+        "password": "llorhan123",
+        "email": "llorhan@example.com",
+        "name": "Llorhan (Admin)",
+        "sport": "beach tennis",
+        "role": "admin",
+        "is_verified": true,
+        "verification_code": "431696"
+    }
+}

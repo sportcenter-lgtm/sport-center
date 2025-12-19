@@ -1,0 +1,156 @@
+
+> beach-tennis-analysis@0.0.0 dev
+> vite --host
+
+
+  VITE v5.4.21  ready in 139 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://192.168.10.158:5173/
+  ➜  press h + enter to show help
+7:46:54 PM [vite] hmr update /src/pages/MakeupSchedulerPage.jsx, /src/index.css
+7:47:09 PM [vite] hmr update /src/pages/MakeupSchedulerPage.jsx, /src/index.css
+7:47:09 PM [vite] Internal server error: /Users/lorhanzaccarias/frontend/src/pages/MakeupSchedulerPage.jsx: Unexpected token, expected "," (730:16)
+
+  728 |                         </div>
+  729 |                     </div>
+> 730 |                 {rosterMenu && (
+      |                 ^
+  731 |                     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[60]" onClick={() => setRosterMenu(null)}>
+  732 |                         <div className="bg-gray-800 p-6 rounded-2xl w-full max-w-sm border border-gray-700 shadow-2xl" onClick={e => e.stopPropagation()}>
+  733 |                             <div className="flex justify-between items-center mb-6">
+  Plugin: vite:react-babel
+  File: /Users/lorhanzaccarias/frontend/src/pages/MakeupSchedulerPage.jsx:730:16
+  728|                          </div>
+  729|                      </div>
+  730|                  {rosterMenu && (
+     |                  ^
+  731|                      <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[60]" onClick={() => setRosterMenu(null)}>
+  732|                          <div className="bg-gray-800 p-6 rounded-2xl w-full max-w-sm border border-gray-700 shadow-2xl" onClick={e => e.stopPropagation()}>
+      at constructor (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.expect (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:6924:12)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11733:14)
+      at JSXParserMixin.parseExprAtom (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11395:23)
+      at JSXParserMixin.parseExprAtom (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOpBaseRightExpr (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11050:34)
+      at JSXParserMixin.parseExprOpRightExpr (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11045:21)
+      at JSXParserMixin.parseExprOp (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11011:27)
+      at JSXParserMixin.parseExprOps (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10972:17)
+      at JSXParserMixin.parseMaybeConditional (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10895:21)
+      at JSXParserMixin.parseExpressionBase (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10848:23)
+      at /Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10844:39
+      at JSXParserMixin.allowInAnd (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:12500:12)
+      at JSXParserMixin.parseExpression (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10844:17)
+      at JSXParserMixin.jsxParseExpressionContainer (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:4661:31)
+      at JSXParserMixin.jsxParseElementAt (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:4740:36)
+      at JSXParserMixin.jsxParseElementAt (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElement (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:4778:17)
+      at JSXParserMixin.parseExprAtom (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:4788:19)
+      at JSXParserMixin.parseExprSubscripts (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:12500:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:12567:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11747:28)
+      at JSXParserMixin.parseExprAtom (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11395:23)
+      at JSXParserMixin.parseExprAtom (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10895:21)
+      at JSXParserMixin.parseExpressionBase (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10848:23)
+      at /Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10844:39
+      at JSXParserMixin.allowInAnd (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:12495:16)
+7:47:09 PM [vite] Internal server error: /Users/lorhanzaccarias/frontend/src/pages/MakeupSchedulerPage.jsx: Unexpected token, expected "," (730:16)
+
+  728 |                         </div>
+  729 |                     </div>
+> 730 |                 {rosterMenu && (
+      |                 ^
+  731 |                     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[60]" onClick={() => setRosterMenu(null)}>
+  732 |                         <div className="bg-gray-800 p-6 rounded-2xl w-full max-w-sm border border-gray-700 shadow-2xl" onClick={e => e.stopPropagation()}>
+  733 |                             <div className="flex justify-between items-center mb-6">
+  Plugin: vite:react-babel
+  File: /Users/lorhanzaccarias/frontend/src/pages/MakeupSchedulerPage.jsx:730:16
+  728|                          </div>
+  729|                      </div>
+  730|                  {rosterMenu && (
+     |                  ^
+  731|                      <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[60]" onClick={() => setRosterMenu(null)}>
+  732|                          <div className="bg-gray-800 p-6 rounded-2xl w-full max-w-sm border border-gray-700 shadow-2xl" onClick={e => e.stopPropagation()}>
+      at constructor (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.expect (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:6924:12)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11733:14)
+      at JSXParserMixin.parseExprAtom (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11395:23)
+      at JSXParserMixin.parseExprAtom (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOpBaseRightExpr (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11050:34)
+      at JSXParserMixin.parseExprOpRightExpr (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11045:21)
+      at JSXParserMixin.parseExprOp (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11011:27)
+      at JSXParserMixin.parseExprOps (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10972:17)
+      at JSXParserMixin.parseMaybeConditional (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10895:21)
+      at JSXParserMixin.parseExpressionBase (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10848:23)
+      at /Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10844:39
+      at JSXParserMixin.allowInAnd (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:12500:12)
+      at JSXParserMixin.parseExpression (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10844:17)
+      at JSXParserMixin.jsxParseExpressionContainer (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:4661:31)
+      at JSXParserMixin.jsxParseElementAt (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:4740:36)
+      at JSXParserMixin.jsxParseElementAt (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElement (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:4778:17)
+      at JSXParserMixin.parseExprAtom (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:4788:19)
+      at JSXParserMixin.parseExprSubscripts (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:12500:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:12567:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11747:28)
+      at JSXParserMixin.parseExprAtom (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11395:23)
+      at JSXParserMixin.parseExprAtom (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10895:21)
+      at JSXParserMixin.parseExpressionBase (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10848:23)
+      at /Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:10844:39
+      at JSXParserMixin.allowInAnd (/Users/lorhanzaccarias/frontend/node_modules/@babel/parser/lib/index.js:12495:16)
+7:47:15 PM [vite] hmr update /src/pages/MakeupSchedulerPage.jsx, /src/index.css
+7:48:35 PM [vite] hmr update /src/pages/MakeupSchedulerPage.jsx, /src/index.css
+7:49:07 PM [vite] hmr update /src/pages/MakeupSchedulerPage.jsx, /src/index.css
+7:51:43 PM [vite] hmr update /src/pages/MakeupSchedulerPage.jsx, /src/index.css
+7:52:02 PM [vite] hmr update /src/pages/MakeupSchedulerPage.jsx, /src/index.css
+7:57:13 PM [vite] hmr update /src/pages/MakeupSchedulerPage.jsx, /src/index.css
+7:57:26 PM [vite] hmr update /src/pages/MakeupSchedulerPage.jsx, /src/index.css
+7:57:37 PM [vite] hmr update /src/pages/MakeupSchedulerPage.jsx, /src/index.css
+8:07:34 PM [vite] hmr update /src/pages/MakeupSchedulerPage.jsx, /src/index.css
+8:07:36 PM [vite] hmr update /src/pages/MakeupSchedulerPage.jsx, /src/index.css

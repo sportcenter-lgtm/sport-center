@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Node
+node_modules/
+dist/
+.DS_Store
+
+# System / Home Dir
+Library/
+Desktop/
+Documents/
+Downloads/
+Movies/
+Music/
+Pictures/
+Public/
+Applications/
+.Trash/
+.npm/
+.ssh/
+.vscode/
+.bash_history
+.zsh_history

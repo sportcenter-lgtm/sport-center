@@ -1,0 +1,1097 @@
+[
+    {
+        "id": "5bb75db0-6cae-4fe2-8aff-b02467cb0ab3",
+        "date": "2024-07-01",
+        "time": "10:00",
+        "student_ids": [],
+        "max_students": 4,
+        "coach": ""
+    },
+    {
+        "id": "ae687d58-62cc-4126-aa25-9b3a49822f7f",
+        "date": "2024-07-08",
+        "time": "10:00",
+        "student_ids": [],
+        "max_students": 4,
+        "coach": ""
+    },
+    {
+        "id": "4657dbfe-13a8-49d9-9863-c354d76961e8",
+        "date": "2024-07-15",
+        "time": "10:00",
+        "student_ids": [],
+        "max_students": 4,
+        "coach": ""
+    },
+    {
+        "id": "f579de99-3eaf-4da3-961f-90e2e57ff6c1",
+        "date": "2024-07-22",
+        "time": "10:00",
+        "student_ids": [],
+        "max_students": 4,
+        "coach": ""
+    },
+    {
+        "id": "38c2caef-4606-46b2-8ee9-1d4246061384",
+        "date": "2024-07-29",
+        "time": "10:00",
+        "student_ids": [],
+        "max_students": 4,
+        "coach": ""
+    },
+    {
+        "id": "65a9a479-f744-4e4e-b202-a642112c86db",
+        "date": "2025-02-26",
+        "time": "15:00",
+        "student_ids": [],
+        "max_students": 4
+    },
+    {
+        "id": "3828466b-bab2-462b-8668-260234d562cd",
+        "date": "2025-05-01",
+        "time": "10:00",
+        "student_ids": [],
+        "max_students": 4
+    },
+    {
+        "id": "cd9122c2-920f-43c7-8825-115fe06eaf03",
+        "date": "2025-05-01",
+        "time": "11:00",
+        "student_ids": [],
+        "max_students": 4
+    },
+    {
+        "id": "499dad65-3de9-4037-91ad-8ba9ea98392c",
+        "date": "2025-06-13",
+        "time": "09:00",
+        "student_ids": [],
+        "max_students": 4,
+        "coach": "Coach Test"
+    },
+    {
+        "id": "17a0d41e-3472-489e-ba81-7786edefc320",
+        "date": "2025-06-20",
+        "time": "09:00",
+        "student_ids": [],
+        "max_students": 4,
+        "coach": "Coach Test"
+    },
+    {
+        "id": "468d5a94-009e-4826-bff3-6cbb2a49ca0a",
+        "date": "2025-06-27",
+        "time": "09:00",
+        "student_ids": [],
+        "max_students": 4,
+        "coach": "Coach Test"
+    },
+    {
+        "id": "e4d0d335-ed01-4de9-9ab1-5170db7d8e8e",
+        "date": "2026-01-02",
+        "time": "13:30",
+        "student_ids": [
+            "f86d0701-8b8e-42b3-897a-77e08ee9d31e",
+            "9732075f-f3cb-4e52-b803-8fc56a10b9b2",
+            "6f16909a-3369-43a8-98b2-aa398314284f"
+        ],
+        "max_students": 3,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "078beb89-0bfc-4e6e-8b37-fd65b1c0a48d",
+        "date": "2026-01-02",
+        "time": "15:00",
+        "student_ids": [
+            "9fc37e99-8e1e-4c88-82ed-236b5a64cbc2"
+        ],
+        "max_students": 2,
+        "coach": "Lorhan",
+        "attendance": {}
+    },
+    {
+        "id": "ec8c94b9-1024-43e7-a8ba-1e14779fa57b",
+        "date": "2026-01-04",
+        "time": "12:00",
+        "student_ids": [
+            "9c1d89e7-fff3-4425-a229-32b8d8e102aa",
+            "94113620-d497-4111-9f24-ee2d46e8344b",
+            "7ca4078a-92a7-4124-9c7b-69ce336f82cf",
+            "c6d53237-1303-47a1-bfe8-ff685d0bfb56"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan",
+        "attendance": {}
+    },
+    {
+        "id": "f73fed52-9a67-4c7b-b496-2d3219cde0b0",
+        "date": "2026-01-04",
+        "time": "12:00",
+        "student_ids": [
+            "df8bff04-5e07-4c67-818d-eb68f2e887bf",
+            "0b500c92-f72c-413c-93ac-a9cb9e0dd246"
+        ],
+        "max_students": 4,
+        "coach": "Tony"
+    },
+    {
+        "id": "25692e39-3c79-45d5-93e9-b702ddd02222",
+        "date": "2026-01-04",
+        "time": "13:00",
+        "student_ids": [
+            "825a592e-434d-403a-9bf8-de302eed95a0",
+            "2a097bd8-e2bb-4efe-8ce7-132bb3794ee9",
+            "46285d5a-b7a6-4c69-9c38-882aeb9af8f0",
+            "598c462c-dbdc-46f6-9f0f-9e9c496c32bd"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan",
+        "attendance": {
+            "46285d5a-b7a6-4c69-9c38-882aeb9af8f0": ""
+        }
+    },
+    {
+        "id": "9adb07e0-8812-49ae-9630-53c0c888c630",
+        "date": "2026-01-04",
+        "time": "13:00",
+        "student_ids": [
+            "5ce3555e-ba18-48ac-b5c3-99ea4f3300e9",
+            "7f72b14f-3420-41b5-9567-59584140166a",
+            "016ca0fd-1c80-4548-8b82-e4bc07b9d06b",
+            "67ff53a0-9b01-4a3a-9dfb-f643ee6c8061"
+        ],
+        "max_students": 4,
+        "coach": "Gabi"
+    },
+    {
+        "id": "3d2e45da-e0bf-4ed8-be9c-fbe316564976",
+        "date": "2026-01-04",
+        "time": "13:00",
+        "student_ids": [
+            "ed433768-41ca-41b8-9424-46ea357ea1c9",
+            "9f97dbc4-3589-4e9e-8d03-3a9d43334ffd",
+            "4dcb7c25-e64a-4050-9190-21b3bbfa976a",
+            "d041d7d3-d314-4289-80c9-433b6d18e5e7"
+        ],
+        "max_students": 4,
+        "coach": "Tony"
+    },
+    {
+        "id": "4bc6fc3e-0fe7-4466-b65a-fdaf0a3c914e",
+        "date": "2026-01-04",
+        "time": "14:00",
+        "student_ids": [
+            "afbfb3e6-290d-49f3-89dc-78e4f350c681",
+            "3483bb4b-96bb-41b3-95cb-c315ac572b8f",
+            "9b11db9d-8014-4b6c-9ecd-601971d1b5e5",
+            "1f317559-5717-44df-848f-80825be135ad"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "734c65e3-91d0-4c6c-bf52-60db72146793",
+        "date": "2026-01-04",
+        "time": "14:00",
+        "student_ids": [
+            "f9fec7a2-4bc9-4107-9a60-767ea14f16fa",
+            "598377cc-eb61-4103-b9de-717f883c96bd",
+            "f68f77e0-258b-4efd-a184-134f32518f44"
+        ],
+        "max_students": 4,
+        "coach": "Gabi"
+    },
+    {
+        "id": "99abb7ca-52ae-45b0-9bdc-3e8f7e16fb03",
+        "date": "2026-01-04",
+        "time": "14:00",
+        "student_ids": [
+            "d7bf69dc-b10d-4f67-b444-e7ac2b353b09",
+            "01112792-37eb-4eb8-9c7a-40f8f03bf55f",
+            "a15cc307-da93-4b06-8e53-05d8510ce32f",
+            "68db4d15-4eb2-47cd-8fe8-81894b789bc4"
+        ],
+        "max_students": 4,
+        "coach": "Tony"
+    },
+    {
+        "id": "6ef24c73-be7d-46a4-bbb7-0241751f6c9d",
+        "date": "2026-01-04",
+        "time": "15:00",
+        "student_ids": [
+            "e5be4c38-5324-4239-8634-276d3d312e01",
+            "e473e851-fa21-4234-bfaa-03778e45c36b",
+            "fc5b42ab-7a39-4bdd-81d4-3d74eeaeee9d",
+            "b59277f1-b416-4a51-8af5-beac6a75e784"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "5426ff17-a89d-4884-9a8a-9e31a491eaef",
+        "date": "2026-01-04",
+        "time": "15:00",
+        "student_ids": [
+            "7be372d4-7136-4901-82ce-02c542f074dc",
+            "4fc7ab01-2fe9-48a9-a6fc-c7a46a7e6498",
+            "b8644131-cd95-481b-be9b-705c5659deda",
+            "d9e7873b-402d-42e4-9297-30cca7422855"
+        ],
+        "max_students": 4,
+        "coach": "Gabi"
+    },
+    {
+        "id": "ef52258e-fcd9-4adf-915a-6f984140f515",
+        "date": "2026-01-04",
+        "time": "15:00",
+        "student_ids": [
+            "01112792-37eb-4eb8-9c7a-40f8f03bf55f",
+            "b76c2fbb-ac44-4e42-bd8e-b53ec07b954b"
+        ],
+        "max_students": 4,
+        "coach": "Tony"
+    },
+    {
+        "id": "c9cc71e0-88e7-4c85-a845-5cadae7a72ce",
+        "date": "2026-01-06",
+        "time": "15:00",
+        "student_ids": [
+            "0b500c92-f72c-413c-93ac-a9cb9e0dd246",
+            "691f0086-5966-4089-b5d0-756628a75edc",
+            "f742c557-9b48-4c32-9fdd-849403ef999d"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "6edd94ad-e7b9-4d91-86f0-a438b852ca06",
+        "date": "2026-01-06",
+        "time": "16:00",
+        "student_ids": [
+            "46285d5a-b7a6-4c69-9c38-882aeb9af8f0",
+            "c5c1b25c-b679-45ba-8423-ee484d2eff66",
+            "cccf9158-d96e-4136-b32d-28446d99742c"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "25e92c20-cd27-4db1-adb2-8b2e753bea8b",
+        "date": "2026-01-06",
+        "time": "16:00",
+        "student_ids": [
+            "f68f77e0-258b-4efd-a184-134f32518f44",
+            "aef7e73c-1bcb-4fc1-bab5-c6449835aba7",
+            "7b8015cb-22bb-43a5-bebf-1f43e7d34dd1"
+        ],
+        "max_students": 4,
+        "coach": "Gabi"
+    },
+    {
+        "id": "e07dcd84-9c21-4f21-bd73-d6c5aa47151e",
+        "date": "2026-01-08",
+        "time": "16:00",
+        "student_ids": [
+            "9c1d89e7-fff3-4425-a229-32b8d8e102aa",
+            "4cda6074-3732-48f5-9084-d2ba5802f4b6",
+            "236d8eeb-fe09-4c62-b6da-883df3c33b3c",
+            "6749852a-ce98-4e70-b512-b4227841443d"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "2e768ee6-8eff-4d35-a05a-16dc1b49c7ff",
+        "date": "2026-01-09",
+        "time": "09:00",
+        "student_ids": [
+            "8d0cbbd1-8f98-4744-ac8b-4982a474cc9e",
+            "996305cf-fa67-45e2-b745-d5d24941a39e",
+            "c9a65ed1-146b-4ffa-81d0-3b9325fb0da4"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "44b1f5d1-30ab-4268-89ed-d70f824bfc77",
+        "date": "2026-01-09",
+        "time": "13:30",
+        "student_ids": [
+            "f86d0701-8b8e-42b3-897a-77e08ee9d31e",
+            "9732075f-f3cb-4e52-b803-8fc56a10b9b2",
+            "6f16909a-3369-43a8-98b2-aa398314284f"
+        ],
+        "max_students": 3,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "53b72701-5fed-4958-bc50-8737ea38a7b9",
+        "date": "2026-01-09",
+        "time": "15:00",
+        "student_ids": [
+            "9fc37e99-8e1e-4c88-82ed-236b5a64cbc2"
+        ],
+        "max_students": 2,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "09841089-4831-4654-8ce4-b428d32a740f",
+        "date": "2026-01-11",
+        "time": "12:00",
+        "student_ids": [
+            "9c1d89e7-fff3-4425-a229-32b8d8e102aa",
+            "94113620-d497-4111-9f24-ee2d46e8344b",
+            "7ca4078a-92a7-4124-9c7b-69ce336f82cf",
+            "c6d53237-1303-47a1-bfe8-ff685d0bfb56"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "01f7c62a-9a0f-4f2f-a6b9-c1dfefb25186",
+        "date": "2026-01-11",
+        "time": "12:00",
+        "student_ids": [
+            "df8bff04-5e07-4c67-818d-eb68f2e887bf",
+            "0b500c92-f72c-413c-93ac-a9cb9e0dd246"
+        ],
+        "max_students": 4,
+        "coach": "Tony"
+    },
+    {
+        "id": "f5fd63b0-8565-47a8-99b8-3a380b904047",
+        "date": "2026-01-11",
+        "time": "13:00",
+        "student_ids": [
+            "825a592e-434d-403a-9bf8-de302eed95a0",
+            "2a097bd8-e2bb-4efe-8ce7-132bb3794ee9",
+            "46285d5a-b7a6-4c69-9c38-882aeb9af8f0",
+            "598c462c-dbdc-46f6-9f0f-9e9c496c32bd"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "e2922264-8d46-4c17-8329-a7e4fcd7c8bd",
+        "date": "2026-01-11",
+        "time": "13:00",
+        "student_ids": [
+            "5ce3555e-ba18-48ac-b5c3-99ea4f3300e9",
+            "7f72b14f-3420-41b5-9567-59584140166a",
+            "016ca0fd-1c80-4548-8b82-e4bc07b9d06b",
+            "67ff53a0-9b01-4a3a-9dfb-f643ee6c8061"
+        ],
+        "max_students": 4,
+        "coach": "Gabi"
+    },
+    {
+        "id": "5c657a3a-35d2-474e-a042-ca1978bece17",
+        "date": "2026-01-11",
+        "time": "13:00",
+        "student_ids": [
+            "ed433768-41ca-41b8-9424-46ea357ea1c9",
+            "d041d7d3-d314-4289-80c9-433b6d18e5e7",
+            "9f97dbc4-3589-4e9e-8d03-3a9d43334ffd",
+            "4dcb7c25-e64a-4050-9190-21b3bbfa976a"
+        ],
+        "max_students": 4,
+        "coach": "Tony"
+    },
+    {
+        "id": "35f9b050-1849-4d7c-9e0e-d1e1b9909379",
+        "date": "2026-01-11",
+        "time": "14:00",
+        "student_ids": [
+            "afbfb3e6-290d-49f3-89dc-78e4f350c681",
+            "3483bb4b-96bb-41b3-95cb-c315ac572b8f",
+            "9b11db9d-8014-4b6c-9ecd-601971d1b5e5",
+            "1f317559-5717-44df-848f-80825be135ad"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "c66efa2a-af25-495f-a52b-dd4474e5c946",
+        "date": "2026-01-11",
+        "time": "14:00",
+        "student_ids": [
+            "f9fec7a2-4bc9-4107-9a60-767ea14f16fa",
+            "598377cc-eb61-4103-b9de-717f883c96bd",
+            "f68f77e0-258b-4efd-a184-134f32518f44"
+        ],
+        "max_students": 4,
+        "coach": "Gabi"
+    },
+    {
+        "id": "3f484d73-8718-44fe-9505-e4ef674b5a0e",
+        "date": "2026-01-11",
+        "time": "14:00",
+        "student_ids": [
+            "d7bf69dc-b10d-4f67-b444-e7ac2b353b09",
+            "01112792-37eb-4eb8-9c7a-40f8f03bf55f",
+            "a15cc307-da93-4b06-8e53-05d8510ce32f",
+            "68db4d15-4eb2-47cd-8fe8-81894b789bc4"
+        ],
+        "max_students": 4,
+        "coach": "Tony"
+    },
+    {
+        "id": "05cefc54-38e6-4b80-b6ab-7b6f3f35b81a",
+        "date": "2026-01-11",
+        "time": "15:00",
+        "student_ids": [
+            "e5be4c38-5324-4239-8634-276d3d312e01",
+            "e473e851-fa21-4234-bfaa-03778e45c36b",
+            "fc5b42ab-7a39-4bdd-81d4-3d74eeaeee9d",
+            "b59277f1-b416-4a51-8af5-beac6a75e784"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "57efbf73-f8e4-4445-8e14-292304fced68",
+        "date": "2026-01-11",
+        "time": "15:00",
+        "student_ids": [
+            "7be372d4-7136-4901-82ce-02c542f074dc",
+            "4fc7ab01-2fe9-48a9-a6fc-c7a46a7e6498",
+            "b8644131-cd95-481b-be9b-705c5659deda",
+            "d9e7873b-402d-42e4-9297-30cca7422855"
+        ],
+        "max_students": 4,
+        "coach": "Gabi"
+    },
+    {
+        "id": "13ed0146-9e59-4419-b67d-e4e4bff14589",
+        "date": "2026-01-11",
+        "time": "15:00",
+        "student_ids": [
+            "01112792-37eb-4eb8-9c7a-40f8f03bf55f",
+            "b76c2fbb-ac44-4e42-bd8e-b53ec07b954b"
+        ],
+        "max_students": 4,
+        "coach": "Tony"
+    },
+    {
+        "id": "911f5691-d960-4932-b4f0-2141f75253e9",
+        "date": "2026-01-13",
+        "time": "15:00",
+        "student_ids": [
+            "0b500c92-f72c-413c-93ac-a9cb9e0dd246",
+            "691f0086-5966-4089-b5d0-756628a75edc",
+            "f742c557-9b48-4c32-9fdd-849403ef999d"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "1f57ae27-4350-4aba-89cf-7d94830cab17",
+        "date": "2026-01-13",
+        "time": "16:00",
+        "student_ids": [
+            "46285d5a-b7a6-4c69-9c38-882aeb9af8f0",
+            "c5c1b25c-b679-45ba-8423-ee484d2eff66",
+            "cccf9158-d96e-4136-b32d-28446d99742c",
+            "7b8015cb-22bb-43a5-bebf-1f43e7d34dd1"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "f9939293-1e9e-476c-8b51-89a67cbef185",
+        "date": "2026-01-13",
+        "time": "16:00",
+        "student_ids": [
+            "f68f77e0-258b-4efd-a184-134f32518f44",
+            "aef7e73c-1bcb-4fc1-bab5-c6449835aba7",
+            "7b8015cb-22bb-43a5-bebf-1f43e7d34dd1"
+        ],
+        "max_students": 4,
+        "coach": "Gabi"
+    },
+    {
+        "id": "f3a683a2-3c86-416f-82d6-a270c14910dc",
+        "date": "2026-01-15",
+        "time": "16:00",
+        "student_ids": [
+            "9c1d89e7-fff3-4425-a229-32b8d8e102aa",
+            "4cda6074-3732-48f5-9084-d2ba5802f4b6",
+            "236d8eeb-fe09-4c62-b6da-883df3c33b3c",
+            "6749852a-ce98-4e70-b512-b4227841443d"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "fb80deb6-c854-453b-8cb3-8e41b60c2e85",
+        "date": "2026-01-16",
+        "time": "09:00",
+        "student_ids": [
+            "8d0cbbd1-8f98-4744-ac8b-4982a474cc9e",
+            "996305cf-fa67-45e2-b745-d5d24941a39e",
+            "c9a65ed1-146b-4ffa-81d0-3b9325fb0da4"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "595a80ec-3897-47f9-af43-351714751a32",
+        "date": "2026-01-16",
+        "time": "13:30",
+        "student_ids": [
+            "f86d0701-8b8e-42b3-897a-77e08ee9d31e",
+            "9732075f-f3cb-4e52-b803-8fc56a10b9b2",
+            "6f16909a-3369-43a8-98b2-aa398314284f"
+        ],
+        "max_students": 3,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "b45e81f4-eb00-4895-8d0a-b3bedfdcc906",
+        "date": "2026-01-16",
+        "time": "15:00",
+        "student_ids": [
+            "9fc37e99-8e1e-4c88-82ed-236b5a64cbc2"
+        ],
+        "max_students": 2,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "f82c6e83-cf61-455b-ad13-24443f92d534",
+        "date": "2026-01-18",
+        "time": "12:00",
+        "student_ids": [
+            "9c1d89e7-fff3-4425-a229-32b8d8e102aa",
+            "94113620-d497-4111-9f24-ee2d46e8344b",
+            "7ca4078a-92a7-4124-9c7b-69ce336f82cf",
+            "c6d53237-1303-47a1-bfe8-ff685d0bfb56"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "944ace1c-2fe1-4380-b37d-546cd7ae64d4",
+        "date": "2026-01-18",
+        "time": "12:00",
+        "student_ids": [
+            "df8bff04-5e07-4c67-818d-eb68f2e887bf",
+            "0b500c92-f72c-413c-93ac-a9cb9e0dd246"
+        ],
+        "max_students": 4,
+        "coach": "Tony"
+    },
+    {
+        "id": "9333edff-335f-45a1-8966-b02013f5b610",
+        "date": "2026-01-18",
+        "time": "13:00",
+        "student_ids": [
+            "825a592e-434d-403a-9bf8-de302eed95a0",
+            "2a097bd8-e2bb-4efe-8ce7-132bb3794ee9",
+            "46285d5a-b7a6-4c69-9c38-882aeb9af8f0",
+            "598c462c-dbdc-46f6-9f0f-9e9c496c32bd"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "9b6cfaf4-d111-487d-9c14-aab5acec84b3",
+        "date": "2026-01-18",
+        "time": "13:00",
+        "student_ids": [
+            "5ce3555e-ba18-48ac-b5c3-99ea4f3300e9",
+            "7f72b14f-3420-41b5-9567-59584140166a",
+            "016ca0fd-1c80-4548-8b82-e4bc07b9d06b",
+            "67ff53a0-9b01-4a3a-9dfb-f643ee6c8061"
+        ],
+        "max_students": 4,
+        "coach": "Gabi"
+    },
+    {
+        "id": "e10bd2df-c512-4117-99b9-d0b5aefc3191",
+        "date": "2026-01-18",
+        "time": "13:00",
+        "student_ids": [
+            "ed433768-41ca-41b8-9424-46ea357ea1c9",
+            "d041d7d3-d314-4289-80c9-433b6d18e5e7",
+            "9f97dbc4-3589-4e9e-8d03-3a9d43334ffd",
+            "4dcb7c25-e64a-4050-9190-21b3bbfa976a"
+        ],
+        "max_students": 4,
+        "coach": "Tony"
+    },
+    {
+        "id": "1a3ed53d-f341-4121-80a3-3c1647f22b2b",
+        "date": "2026-01-18",
+        "time": "14:00",
+        "student_ids": [
+            "afbfb3e6-290d-49f3-89dc-78e4f350c681",
+            "3483bb4b-96bb-41b3-95cb-c315ac572b8f",
+            "9b11db9d-8014-4b6c-9ecd-601971d1b5e5",
+            "1f317559-5717-44df-848f-80825be135ad"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "8aa81f30-3a07-482b-a27a-ff0b5b7ea8a7",
+        "date": "2026-01-18",
+        "time": "14:00",
+        "student_ids": [
+            "f9fec7a2-4bc9-4107-9a60-767ea14f16fa",
+            "598377cc-eb61-4103-b9de-717f883c96bd",
+            "f68f77e0-258b-4efd-a184-134f32518f44"
+        ],
+        "max_students": 4,
+        "coach": "Gabi"
+    },
+    {
+        "id": "53e0800b-2fb9-4f80-8cfb-a40123973377",
+        "date": "2026-01-18",
+        "time": "14:00",
+        "student_ids": [
+            "d7bf69dc-b10d-4f67-b444-e7ac2b353b09",
+            "01112792-37eb-4eb8-9c7a-40f8f03bf55f",
+            "a15cc307-da93-4b06-8e53-05d8510ce32f",
+            "68db4d15-4eb2-47cd-8fe8-81894b789bc4"
+        ],
+        "max_students": 4,
+        "coach": "Tony"
+    },
+    {
+        "id": "2f9a5a8e-d7a3-4f0f-9d31-c5abb4c8b312",
+        "date": "2026-01-18",
+        "time": "15:00",
+        "student_ids": [
+            "e5be4c38-5324-4239-8634-276d3d312e01",
+            "e473e851-fa21-4234-bfaa-03778e45c36b",
+            "fc5b42ab-7a39-4bdd-81d4-3d74eeaeee9d",
+            "b59277f1-b416-4a51-8af5-beac6a75e784"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "00965557-1a68-46f0-8f08-e76a3b685c9d",
+        "date": "2026-01-18",
+        "time": "15:00",
+        "student_ids": [
+            "7be372d4-7136-4901-82ce-02c542f074dc",
+            "4fc7ab01-2fe9-48a9-a6fc-c7a46a7e6498",
+            "b8644131-cd95-481b-be9b-705c5659deda",
+            "d9e7873b-402d-42e4-9297-30cca7422855"
+        ],
+        "max_students": 4,
+        "coach": "Gabi"
+    },
+    {
+        "id": "be02e565-fc0d-4003-a528-25acbeb52e71",
+        "date": "2026-01-18",
+        "time": "15:00",
+        "student_ids": [
+            "01112792-37eb-4eb8-9c7a-40f8f03bf55f",
+            "b76c2fbb-ac44-4e42-bd8e-b53ec07b954b"
+        ],
+        "max_students": 4,
+        "coach": "Tony"
+    },
+    {
+        "id": "e892b1e9-9c7b-4342-875d-126c11df678e",
+        "date": "2026-01-20",
+        "time": "15:00",
+        "student_ids": [
+            "0b500c92-f72c-413c-93ac-a9cb9e0dd246",
+            "691f0086-5966-4089-b5d0-756628a75edc",
+            "f742c557-9b48-4c32-9fdd-849403ef999d"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "85fc72c2-a719-4982-953e-1dc0bf130737",
+        "date": "2026-01-20",
+        "time": "16:00",
+        "student_ids": [
+            "46285d5a-b7a6-4c69-9c38-882aeb9af8f0",
+            "c5c1b25c-b679-45ba-8423-ee484d2eff66",
+            "cccf9158-d96e-4136-b32d-28446d99742c",
+            "7b8015cb-22bb-43a5-bebf-1f43e7d34dd1"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "b0476151-437a-4d03-b31a-48c0aa552d18",
+        "date": "2026-01-20",
+        "time": "16:00",
+        "student_ids": [
+            "f68f77e0-258b-4efd-a184-134f32518f44",
+            "aef7e73c-1bcb-4fc1-bab5-c6449835aba7",
+            "7b8015cb-22bb-43a5-bebf-1f43e7d34dd1"
+        ],
+        "max_students": 4,
+        "coach": "Gabi"
+    },
+    {
+        "id": "f3591cc7-7074-4178-a2af-f9079029fcd6",
+        "date": "2026-01-22",
+        "time": "16:00",
+        "student_ids": [
+            "9c1d89e7-fff3-4425-a229-32b8d8e102aa",
+            "4cda6074-3732-48f5-9084-d2ba5802f4b6",
+            "236d8eeb-fe09-4c62-b6da-883df3c33b3c",
+            "6749852a-ce98-4e70-b512-b4227841443d"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "5a47d5c8-1e0a-4aa3-a114-abb318c0b21f",
+        "date": "2026-01-23",
+        "time": "09:00",
+        "student_ids": [
+            "8d0cbbd1-8f98-4744-ac8b-4982a474cc9e",
+            "996305cf-fa67-45e2-b745-d5d24941a39e",
+            "c9a65ed1-146b-4ffa-81d0-3b9325fb0da4"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "7d508ea3-cfdd-4780-93a4-ffae4587bbd4",
+        "date": "2026-01-23",
+        "time": "13:30",
+        "student_ids": [
+            "f86d0701-8b8e-42b3-897a-77e08ee9d31e",
+            "9732075f-f3cb-4e52-b803-8fc56a10b9b2",
+            "6f16909a-3369-43a8-98b2-aa398314284f"
+        ],
+        "max_students": 3,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "70132ec5-ca32-4ecb-9dc3-93c7a0b79bb2",
+        "date": "2026-01-23",
+        "time": "15:00",
+        "student_ids": [
+            "9fc37e99-8e1e-4c88-82ed-236b5a64cbc2"
+        ],
+        "max_students": 2,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "ceb0c93a-a8e3-42a0-a7e0-14661978e529",
+        "date": "2026-01-25",
+        "time": "12:00",
+        "student_ids": [
+            "9c1d89e7-fff3-4425-a229-32b8d8e102aa",
+            "94113620-d497-4111-9f24-ee2d46e8344b",
+            "7ca4078a-92a7-4124-9c7b-69ce336f82cf",
+            "c6d53237-1303-47a1-bfe8-ff685d0bfb56"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "6cc68c71-d4d1-4760-b086-3ac33366a631",
+        "date": "2026-01-25",
+        "time": "12:00",
+        "student_ids": [
+            "df8bff04-5e07-4c67-818d-eb68f2e887bf",
+            "0b500c92-f72c-413c-93ac-a9cb9e0dd246"
+        ],
+        "max_students": 4,
+        "coach": "Tony"
+    },
+    {
+        "id": "f4312095-219b-4fef-815c-a1b91d9c7ed2",
+        "date": "2026-01-25",
+        "time": "13:00",
+        "student_ids": [
+            "825a592e-434d-403a-9bf8-de302eed95a0",
+            "2a097bd8-e2bb-4efe-8ce7-132bb3794ee9",
+            "46285d5a-b7a6-4c69-9c38-882aeb9af8f0",
+            "598c462c-dbdc-46f6-9f0f-9e9c496c32bd"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "2c507e89-0ff0-4a48-acc7-7363ae9f1a87",
+        "date": "2026-01-25",
+        "time": "13:00",
+        "student_ids": [
+            "5ce3555e-ba18-48ac-b5c3-99ea4f3300e9",
+            "7f72b14f-3420-41b5-9567-59584140166a",
+            "016ca0fd-1c80-4548-8b82-e4bc07b9d06b",
+            "67ff53a0-9b01-4a3a-9dfb-f643ee6c8061"
+        ],
+        "max_students": 4,
+        "coach": "Gabi"
+    },
+    {
+        "id": "64f0fa9a-a041-4682-afd1-37162e83e05f",
+        "date": "2026-01-25",
+        "time": "13:00",
+        "student_ids": [
+            "ed433768-41ca-41b8-9424-46ea357ea1c9",
+            "d041d7d3-d314-4289-80c9-433b6d18e5e7",
+            "9f97dbc4-3589-4e9e-8d03-3a9d43334ffd",
+            "4dcb7c25-e64a-4050-9190-21b3bbfa976a"
+        ],
+        "max_students": 4,
+        "coach": "Tony"
+    },
+    {
+        "id": "4f9a61e9-b950-4de1-ac39-c0f8b7478d49",
+        "date": "2026-01-25",
+        "time": "14:00",
+        "student_ids": [
+            "afbfb3e6-290d-49f3-89dc-78e4f350c681",
+            "3483bb4b-96bb-41b3-95cb-c315ac572b8f",
+            "9b11db9d-8014-4b6c-9ecd-601971d1b5e5",
+            "1f317559-5717-44df-848f-80825be135ad"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "ae25f2ed-4469-41ab-9006-b626def39f7d",
+        "date": "2026-01-25",
+        "time": "14:00",
+        "student_ids": [
+            "f9fec7a2-4bc9-4107-9a60-767ea14f16fa",
+            "598377cc-eb61-4103-b9de-717f883c96bd",
+            "f68f77e0-258b-4efd-a184-134f32518f44"
+        ],
+        "max_students": 4,
+        "coach": "Gabi"
+    },
+    {
+        "id": "e286a081-f33b-499e-a991-09cd83cf367b",
+        "date": "2026-01-25",
+        "time": "14:00",
+        "student_ids": [
+            "d7bf69dc-b10d-4f67-b444-e7ac2b353b09",
+            "01112792-37eb-4eb8-9c7a-40f8f03bf55f",
+            "a15cc307-da93-4b06-8e53-05d8510ce32f",
+            "68db4d15-4eb2-47cd-8fe8-81894b789bc4"
+        ],
+        "max_students": 4,
+        "coach": "Tony"
+    },
+    {
+        "id": "3d4415df-c240-4481-ae38-c85670bb2857",
+        "date": "2026-01-25",
+        "time": "15:00",
+        "student_ids": [
+            "e5be4c38-5324-4239-8634-276d3d312e01",
+            "e473e851-fa21-4234-bfaa-03778e45c36b",
+            "fc5b42ab-7a39-4bdd-81d4-3d74eeaeee9d",
+            "b59277f1-b416-4a51-8af5-beac6a75e784"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "5473d60b-8212-4cbc-ad08-5dbb56d13b31",
+        "date": "2026-01-25",
+        "time": "15:00",
+        "student_ids": [
+            "7be372d4-7136-4901-82ce-02c542f074dc",
+            "4fc7ab01-2fe9-48a9-a6fc-c7a46a7e6498",
+            "b8644131-cd95-481b-be9b-705c5659deda",
+            "d9e7873b-402d-42e4-9297-30cca7422855"
+        ],
+        "max_students": 4,
+        "coach": "Gabi"
+    },
+    {
+        "id": "ced474e0-f8c0-4f5b-bdf8-a27a447af7fb",
+        "date": "2026-01-25",
+        "time": "15:00",
+        "student_ids": [
+            "01112792-37eb-4eb8-9c7a-40f8f03bf55f",
+            "b76c2fbb-ac44-4e42-bd8e-b53ec07b954b"
+        ],
+        "max_students": 4,
+        "coach": "Tony"
+    },
+    {
+        "id": "c8d76c14-43a9-468d-95a9-644ecd0ba611",
+        "date": "2026-01-27",
+        "time": "15:00",
+        "student_ids": [
+            "0b500c92-f72c-413c-93ac-a9cb9e0dd246",
+            "691f0086-5966-4089-b5d0-756628a75edc",
+            "f742c557-9b48-4c32-9fdd-849403ef999d"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "fc79dded-9e57-4810-8b36-3f76aad7b1f4",
+        "date": "2026-01-27",
+        "time": "16:00",
+        "student_ids": [
+            "46285d5a-b7a6-4c69-9c38-882aeb9af8f0",
+            "c5c1b25c-b679-45ba-8423-ee484d2eff66",
+            "cccf9158-d96e-4136-b32d-28446d99742c",
+            "7b8015cb-22bb-43a5-bebf-1f43e7d34dd1"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "8a371d9a-a279-4eb0-ae34-65ce2332d12b",
+        "date": "2026-01-27",
+        "time": "16:00",
+        "student_ids": [
+            "f68f77e0-258b-4efd-a184-134f32518f44",
+            "aef7e73c-1bcb-4fc1-bab5-c6449835aba7",
+            "7b8015cb-22bb-43a5-bebf-1f43e7d34dd1"
+        ],
+        "max_students": 4,
+        "coach": "Gabi"
+    },
+    {
+        "id": "e754e5fc-ab28-4ff9-b469-af75640fcd12",
+        "date": "2026-01-29",
+        "time": "16:00",
+        "student_ids": [
+            "9c1d89e7-fff3-4425-a229-32b8d8e102aa",
+            "4cda6074-3732-48f5-9084-d2ba5802f4b6",
+            "236d8eeb-fe09-4c62-b6da-883df3c33b3c",
+            "6749852a-ce98-4e70-b512-b4227841443d"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "dee9a5cb-fb76-4f5f-ae3e-b4376f695b38",
+        "date": "2026-01-30",
+        "time": "09:00",
+        "student_ids": [
+            "8d0cbbd1-8f98-4744-ac8b-4982a474cc9e",
+            "996305cf-fa67-45e2-b745-d5d24941a39e",
+            "c9a65ed1-146b-4ffa-81d0-3b9325fb0da4"
+        ],
+        "max_students": 4,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "3c79375c-822a-4c0d-a8e7-ee32e9f71ed9",
+        "date": "2026-01-30",
+        "time": "13:30",
+        "student_ids": [
+            "f86d0701-8b8e-42b3-897a-77e08ee9d31e",
+            "9732075f-f3cb-4e52-b803-8fc56a10b9b2",
+            "6f16909a-3369-43a8-98b2-aa398314284f"
+        ],
+        "max_students": 3,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "e9702cd4-ac49-4bd8-99d3-f161fde51859",
+        "date": "2026-01-30",
+        "time": "15:00",
+        "student_ids": [
+            "9fc37e99-8e1e-4c88-82ed-236b5a64cbc2"
+        ],
+        "max_students": 2,
+        "coach": "Lorhan"
+    },
+    {
+        "id": "3c479e26-f5e4-416e-b8d6-cbe8561145db",
+        "date": "2026-02-06",
+        "time": "10:00",
+        "student_ids": [],
+        "max_students": 2,
+        "coach": "Test"
+    },
+    {
+        "id": "1361646b-eaaa-4b4e-849d-3222e0f91175",
+        "date": "2026-02-06",
+        "time": "11:00",
+        "student_ids": [],
+        "max_students": 4,
+        "coach": "Test"
+    },
+    {
+        "id": "5b353c1b-0e98-4485-9cbe-048836036aea",
+        "date": "2026-02-13",
+        "time": "10:00",
+        "student_ids": [],
+        "max_students": 2,
+        "coach": "Test"
+    },
+    {
+        "id": "519e3bbf-6f16-4454-b273-db76065b727c",
+        "date": "2026-02-13",
+        "time": "11:00",
+        "student_ids": [],
+        "max_students": 4,
+        "coach": "Test"
+    },
+    {
+        "id": "9ce95dbb-365a-44c6-87e1-924da72d1091",
+        "date": "2026-02-20",
+        "time": "10:00",
+        "student_ids": [],
+        "max_students": 2,
+        "coach": "Test"
+    },
+    {
+        "id": "e7cdc81c-96dd-4aa8-b994-d668b53900fe",
+        "date": "2026-02-20",
+        "time": "11:00",
+        "student_ids": [],
+        "max_students": 4,
+        "coach": "Test"
+    },
+    {
+        "id": "f1a39288-363b-47ed-86d2-9835af147820",
+        "date": "2026-02-27",
+        "time": "10:00",
+        "student_ids": [],
+        "max_students": 2,
+        "coach": "Test"
+    },
+    {
+        "id": "ad4023ce-08a1-45cf-8d71-58c64f927f58",
+        "date": "2026-02-27",
+        "time": "11:00",
+        "student_ids": [],
+        "max_students": 4,
+        "coach": "Test"
+    },
+    {
+        "id": "e1b4b405-aebc-403c-9bd7-ce3d592a4e72",
+        "date": "2026-03-06",
+        "time": "11:00",
+        "student_ids": [],
+        "max_students": 5,
+        "coach": "NewCoach"
+    },
+    {
+        "id": "39c31c37-7438-4e8f-87df-29d091bd7b94",
+        "date": "2026-03-13",
+        "time": "11:00",
+        "student_ids": [],
+        "max_students": 5,
+        "coach": "NewCoach"
+    },
+    {
+        "id": "2b03495f-ed08-4fdf-91af-ff05fbe60723",
+        "date": "2026-03-20",
+        "time": "11:00",
+        "student_ids": [],
+        "max_students": 5,
+        "coach": "NewCoach"
+    },
+    {
+        "id": "aac0488d-2c2e-4349-b61d-d1da416a0425",
+        "date": "2026-03-27",
+        "time": "11:00",
+        "student_ids": [],
+        "max_students": 5,
+        "coach": "NewCoach"
+    }
+]

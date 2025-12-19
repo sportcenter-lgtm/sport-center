@@ -1,0 +1,27 @@
+{
+    "llorhan": {
+        "password": "llorhan123",
+        "email": "llorhan@example.com",
+        "name": "Llorhan (Admin)",
+        "sport": "beach tennis",
+        "role": "admin",
+        "is_verified": true,
+        "students": [
+            {
+                "id": "30faa59c",
+                "name": "Test Student",
+                "sport": "beach tennis",
+                "created_at": "now"
+            }
+        ]
+    },
+    "Louca": {
+        "password": "Louca123",
+        "email": "nataliamelchordvm@gmail.com",
+        "name": "Loquita",
+        "sport": "beach tennis",
+        "role": "user",
+        "is_verified": true,
+        "verification_code": "405451"
+    }
+}
