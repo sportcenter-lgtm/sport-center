@@ -238,6 +238,7 @@ function MakeupSchedulerPage() {
             await axios.post(`${API_URL}/scheduler/classes/copy`, { target_month: currentMonth });
             alert("Schedule copied successfully!");
             fetchClasses();
+            fetchTarget();
         } catch (error) {
             alert("Failed to copy schedule: " + (error.response?.data?.detail || error.message));
         }

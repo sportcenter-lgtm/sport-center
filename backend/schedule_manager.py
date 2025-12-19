@@ -336,6 +336,10 @@ class ScheduleManager:
             
             source_month_str = f"{p_year}-{p_month:02d}"
             
+            # --- NEW: Copy Monthly Target ---
+            prev_target = self.get_target(source_month_str)
+            self.set_target(target_month_str, prev_target)
+            
             # 2. Get source classes
             source_classes = self.get_classes(source_month_str)
             if not source_classes:
