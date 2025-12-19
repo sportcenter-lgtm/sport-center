@@ -506,7 +506,7 @@ function MakeupSchedulerPage() {
                                     onChange={async (e) => {
                                         const val = parseInt(e.target.value) || 0;
                                         setMonthlyTarget(val);
-                                        await axios.post(`${API_URL}/scheduler/targets/${currentMonth}`, { count: val });
+                                        await axios.post(`${API_URL}/scheduler/targets/${currentMonth}`, { target: val });
                                     }}
                                 />
                                 <span className="text-xs text-gray-500">classes</span>
@@ -1229,7 +1229,7 @@ function MakeupSchedulerPage() {
                                     onClick={() => setShowOnlyMakeup(!showOnlyMakeup)}
                                     className={`text-[10px] px-2 py-1 rounded border transition-colors ${showOnlyMakeup ? 'bg-orange-600 border-orange-500 text-white' : 'bg-gray-700 border-gray-600 text-gray-400 hover:text-white'}`}
                                 >
-                                    {showOnlyMakeup ? 'Show All' : 'Make Up List'}
+                                    {showOnlyMakeup ? 'Show All' : `Make Up List (${players.filter(p => p.makeup_credits > 0).length})`}
                                 </button>
                             </div>
                             <div className="px-1 pb-2">

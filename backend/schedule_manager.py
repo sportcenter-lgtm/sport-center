@@ -9,22 +9,20 @@ class ScheduleManager:
         self.players_file = players_file
         self.classes_file = classes_file
         self.targets_file = targets_file
-        self.players = self._load_json(self.players_file)
-        self.classes = self._load_json(self.classes_file)
-        self.monthly_targets = self._load_json(self.targets_file)
-        if isinstance(self.monthly_targets, list): # Handle case where it might be []
-            self.monthly_targets = {}
+        self.players = self._load_json(self.players_file, list)
+        self.classes = self._load_json(self.classes_file, list)
+        self.monthly_targets = self._load_json(self.targets_file, dict)
 
-    def _load_json(self, filepath: str) -> List[Dict]:
+    def _load_json(self, filepath: str, default_type=list) -> any:
         if not os.path.exists(filepath):
-            return []
+            return default_type()
         try:
             with open(filepath, "r") as f:
                 return json.load(f)
         except:
-            return []
+            return default_type()
 
-    def _save_json(self, data: List[Dict], filepath: str):
+    def _save_json(self, data: any, filepath: str):
         with open(filepath, "w") as f:
             json.dump(data, f, indent=4)
 
@@ -644,6 +642,14 @@ class ScheduleManager:
                 return True, "Success"
         return False, "Class not found"
 
+    # --- Target Management ---
+    def get_target(self, month: str) -> int:
+        return self.monthly_targets.get(month, 8) # Default 8
+
+    def set_target(self, month: str, target: int):
+        self.monthly_targets[month] = target
+        self._save_json(self.monthly_targets, self.targets_file)
+
     def calculate_month_stats(self, month: str) -> List[Dict]:
         """
         Returns stats for all students for the given month:
@@ -661,11 +667,7 @@ class ScheduleManager:
             name = student["name"]
             
             # Get target (default 8)
-            target = 8
-            # Note: Assuming self.monthly_targets is loaded/managed elsewhere or we default to 8
-            # If monthly_targets isn't in __init__, we might need to load it or just use default.
-            # Let's check if monthly_targets exists in the class.
-            # For now, simplistic approach or check if a method exists.
+            target = self.get_target(month)
             
             attended_count = 0
             absences_count = 0

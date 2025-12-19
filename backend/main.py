@@ -288,6 +288,9 @@ class PlayerUpdate(BaseModel):
     default_days: Optional[List[str]] = None
     makeup_credits: Optional[int] = None
 
+class TargetUpdate(BaseModel):
+    target: int
+
 @app.post("/scheduler/players")
 def add_schedule_player(player: SchedulePlayerCreate):
     new_player = schedule_manager.add_player(player.name, player.level, player.default_days)
@@ -429,6 +432,15 @@ def mark_class_absent(data: MarkAbsent):
     if not success:
         raise HTTPException(status_code=400, detail=msg)
     return {"message": msg}
+
+@app.get("/scheduler/targets/{month}")
+def get_monthly_target(month: str):
+    return {"target": schedule_manager.get_target(month)}
+
+@app.post("/scheduler/targets/{month}")
+def update_monthly_target(month: str, data: TargetUpdate):
+    schedule_manager.set_target(month, data.target)
+    return {"message": "Target updated"}
 
 if __name__ == "__main__":
     import uvicorn
