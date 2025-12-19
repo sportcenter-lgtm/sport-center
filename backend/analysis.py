@@ -1,4 +1,5 @@
 import cv2
+import numpy as np
 try:
     import mediapipe as mp
     mp_pose = mp.solutions.pose
