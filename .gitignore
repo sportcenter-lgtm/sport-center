@@ -10,6 +10,16 @@ node_modules/
 dist/
 .DS_Store
 
+# Hidden / App Data
+.*
+.antigravity/
+.gemini/
+.matplotlib/
+verification_codes.txt
+processed/
+uploads/
+!/.gitignore
+
 # System / Home Dir
 Library/
 Desktop/
@@ -26,3 +36,7 @@ Applications/
 .vscode/
 .bash_history
 .zsh_history
+.CFUserTextEncoding
+.viminfo
+.zprofile
+
