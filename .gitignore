@@ -12,13 +12,14 @@ dist/
 
 # Hidden / App Data
 .*
+!.gitignore
+!.gemini/antigravity/brain/
 .antigravity/
-.gemini/
 .matplotlib/
 verification_codes.txt
 processed/
 uploads/
-!/.gitignore
+
 
 # System / Home Dir
 Library/
