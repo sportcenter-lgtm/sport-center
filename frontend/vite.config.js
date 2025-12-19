@@ -9,7 +9,7 @@ export default defineConfig({
         allowedHosts: true, // Allow all hosts for tunneling
         proxy: {
             '/api': {
-                target: 'http://localhost:8000',
+                target: 'http://localhost:10000',
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api/, ''),
             },
