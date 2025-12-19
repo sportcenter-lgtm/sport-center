@@ -1336,51 +1336,32 @@ function MakeupSchedulerPage() {
                                                     handleFindMakeup(player.id);
                                                 }}
                                             >
-                                                {/* Action Menu Popover */}
-                                                {activeActionMenu === player.id && (
-                                                    <div className="absolute left-10 top-2 z-[60] bg-gray-800 border-2 border-orange-500 rounded-xl shadow-2xl p-1 flex flex-col gap-1 min-w-[120px] scale-in-center">
+                                                <div className="flex items-center gap-2 w-full">
+                                                    {/* Direct Adjustment Buttons */}
+                                                    <div className="flex items-center bg-gray-900/60 rounded-lg p-0.5 border border-gray-700/50">
+                                                        <button
+                                                            onClick={(e) => { e.stopPropagation(); handleAdjustCredits(player.id, -1); }}
+                                                            className="w-6 h-6 flex items-center justify-center text-gray-500 hover:text-red-400 hover:bg-red-400/10 rounded-md transition-all active:scale-95"
+                                                            title="Remove 1 Credit"
+                                                        >
+                                                            <Minus size={14} strokeWidth={3} />
+                                                        </button>
                                                         <button
                                                             onClick={(e) => { e.stopPropagation(); handleAdjustCredits(player.id, 1); }}
-                                                            className="flex items-center gap-2 px-3 py-2 hover:bg-orange-500/10 text-orange-400 rounded-lg transition-colors text-xs font-bold"
+                                                            className="w-6 h-6 flex items-center justify-center text-orange-500 hover:bg-orange-500/10 rounded-md transition-all active:scale-95"
+                                                            title="Add 1 Credit"
                                                         >
-                                                            <Plus size={14} /> Add 1 Credit
-                                                        </button>
-                                                        <button
-                                                            onClick={(e) => { e.stopPropagation(); handleFindMakeup(player.id); setActiveActionMenu(null); }}
-                                                            className="flex items-center gap-2 px-3 py-2 hover:bg-blue-500/10 text-blue-400 rounded-lg transition-colors text-xs font-bold"
-                                                        >
-                                                            <Search size={14} /> Book Makeup
-                                                        </button>
-                                                        <div className="border-t border-gray-700 my-1" />
-                                                        <button
-                                                            onClick={(e) => { e.stopPropagation(); setActiveActionMenu(null); }}
-                                                            className="px-3 py-1 text-center text-[10px] text-gray-500 hover:text-white"
-                                                        >
-                                                            Cancel
+                                                            <Plus size={14} strokeWidth={3} />
                                                         </button>
                                                     </div>
-                                                )}
 
-                                                <div className="flex items-center gap-3 w-full">
-                                                    {/* ALWAYS-VISIBLE Plus Action Button */}
-                                                    <button
-                                                        onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            setActiveActionMenu(activeActionMenu === player.id ? null : player.id);
-                                                        }}
-                                                        className={`flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-lg shadow-lg shadow-orange-950/20 transition-all hover:scale-110 active:scale-95 ${activeActionMenu === player.id ? 'bg-white text-orange-600' : 'bg-orange-600 hover:bg-orange-500 text-white'}`}
-                                                        title="Quick Actions"
-                                                    >
-                                                        <Plus size={14} strokeWidth={3} />
-                                                    </button>
-
-                                                    <div className="flex-1 min-w-0">
+                                                    <div className="flex-1 min-w-0 ml-1">
                                                         <div className="flex items-center gap-2">
                                                             <span className="font-bold truncate">{player.name}</span>
                                                             {targetMet && <span className="text-sm">🏆</span>}
                                                         </div>
                                                         <div className="flex items-center gap-2 text-[10px] text-gray-500">
-                                                            <span className={`px-1 rounded border ${getLevelColor(player.level)}`}>Lvl {player.level}</span>
+                                                            <span className={`px-0.5 rounded border border-gray-700 ${getLevelColor(player.level)}`}>Lvl {player.level}</span>
                                                             {player.makeup_credits > 0 ? (
                                                                 <span className="text-orange-500/80 font-black tracking-wider uppercase">
                                                                     {player.makeup_credits} Makeup{player.makeup_credits > 1 ? 's' : ''}
@@ -1391,16 +1372,28 @@ function MakeupSchedulerPage() {
                                                         </div>
                                                     </div>
 
-                                                    <button
-                                                        onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            setEditingPlayer(player);
-                                                        }}
-                                                        className="opacity-0 group-hover:opacity-100 p-1.5 hover:bg-gray-600 rounded-lg text-gray-400 hover:text-white transition-all shadow-sm"
-                                                        title="Edit Student Profile"
-                                                    >
-                                                        <User size={14} />
-                                                    </button>
+                                                    <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                        <button
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                handleFindMakeup(player.id);
+                                                            }}
+                                                            className="p-1.5 hover:bg-blue-500/20 rounded-lg text-blue-400 transition-all"
+                                                            title="Book Makeup"
+                                                        >
+                                                            <Search size={14} />
+                                                        </button>
+                                                        <button
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                setEditingPlayer(player);
+                                                            }}
+                                                            className="p-1.5 hover:bg-gray-600 rounded-lg text-gray-400 hover:text-white transition-all shadow-sm"
+                                                            title="Edit Student Profile"
+                                                        >
+                                                            <User size={14} />
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         )
