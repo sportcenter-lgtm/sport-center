@@ -234,6 +234,7 @@ class SchedulePlayerCreate(BaseModel):
     name: str
     level: int
     default_days: List[str] = []
+    has_subscription: bool = False
     enrollments: List[dict] = [] # List of { month, weekday, time, coach }
 
 class BatchEnroll(BaseModel):
@@ -287,13 +288,14 @@ class PlayerUpdate(BaseModel):
     level: Optional[int] = None
     default_days: Optional[List[str]] = None
     makeup_credits: Optional[int] = None
+    has_subscription: Optional[bool] = None
 
 class TargetUpdate(BaseModel):
     target: int
 
 @app.post("/scheduler/players")
 def add_schedule_player(player: SchedulePlayerCreate):
-    new_player = schedule_manager.add_player(player.name, player.level, player.default_days)
+    new_player = schedule_manager.add_player(player.name, player.level, player.default_days, player.has_subscription)
     
     # Handle multiple initial enrollments
     for ie in player.enrollments:
@@ -348,7 +350,7 @@ def unenroll_player_series(player_id: str, data: BatchEnroll):
 
 @app.patch("/scheduler/players/{player_id}")
 def update_schedule_player(player_id: str, data: PlayerUpdate):
-    success = schedule_manager.update_player(player_id, data.name, data.level, data.default_days, data.makeup_credits)
+    success = schedule_manager.update_player(player_id, data.name, data.level, data.default_days, data.makeup_credits, data.has_subscription)
     if not success:
         raise HTTPException(status_code=404, detail="Player not found")
     return {"message": "Player updated"}

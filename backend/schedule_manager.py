@@ -23,17 +23,27 @@ class ScheduleManager:
             return default_type()
 
     def _save_json(self, data: any, filepath: str):
-        with open(filepath, "w") as f:
-            json.dump(data, f, indent=4)
+        temp_file = f"{filepath}.tmp"
+        try:
+            with open(temp_file, "w") as f:
+                json.dump(data, f, indent=4)
+                f.flush()
+                os.fsync(f.fileno())
+            os.replace(temp_file, filepath)
+        except Exception as e:
+            print(f"Error saving {filepath}: {e}")
+            if os.path.exists(temp_file):
+                os.remove(temp_file)
 
     # --- Player Management ---
-    def add_player(self, name: str, level: int, default_days: List[str] = []) -> Dict:
+    def add_player(self, name: str, level: int, default_days: List[str] = [], has_subscription: bool = False) -> Dict:
         player = {
             "id": str(uuid.uuid4()),
             "name": name,
             "level": level,
             "default_days": default_days,
             "makeup_credits": 0,
+            "has_subscription": has_subscription,
             "stats": {
                 "classes_attended": 0,
                 "makeups_used": 0
@@ -129,6 +139,30 @@ class ScheduleManager:
                 created_classes.append(new_cls)
                 
         return created_classes
+
+    def update_player(self, player_id: str, name: str = None, level: int = None, default_days: List[str] = None, makeup_credits: int = None, has_subscription: bool = None) -> bool:
+        for p in self.players:
+            if p["id"] == player_id:
+                if name is not None:
+                    p["name"] = name
+                if level is not None:
+                    try:
+                        p["level"] = int(level)
+                    except:
+                        pass
+                if default_days is not None:
+                    p["default_days"] = default_days
+                if makeup_credits is not None:
+                    try:
+                        p["makeup_credits"] = int(makeup_credits)
+                    except:
+                        pass
+                if has_subscription is not None:
+                    p["has_subscription"] = has_subscription
+                
+                self._save_json(self.players, self.players_file)
+                return True
+        return False
 
     def update_class(self, class_id: str, date: str = None, time: str = None, coach: str = None, student_ids: List[str] = None, max_students: int = None) -> bool:
         for c in self.classes:

@@ -1,9 +1,13 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Calendar, User, Clock, Users, Plus, Minus, CheckCircle, XCircle, Trash2, ArrowRight, Search, RefreshCw, Pencil, Home } from 'lucide-react';
+import { Calendar, User, Clock, Users, Plus, Minus, CheckCircle, XCircle, Trash2, ArrowRight, Search, RefreshCw, Pencil, Home, Download } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 import config from '../config';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+
 
 const API_URL = config.API_URL;
 
@@ -21,7 +25,8 @@ function MakeupSchedulerPage() {
     const [editingClass, setEditingClass] = useState(null); // { id, date, time, coach }
     const [editingPlayer, setEditingPlayer] = useState(null); // { id, name, level, default_days }
 
-    const [newPlayer, setNewPlayer] = useState({ name: '', level: 1, default_days: [], enrollments: [''] });
+    const [showStatsModal, setShowStatsModal] = useState(false);
+    const [newPlayer, setNewPlayer] = useState({ name: '', level: 1, default_days: [], has_subscription: false, enrollments: [''] });
     const [enrollMonth, setEnrollMonth] = useState(new Date().toISOString().slice(0, 7));
     const [enrollClasses, setEnrollClasses] = useState([]);
 
@@ -67,7 +72,7 @@ function MakeupSchedulerPage() {
 
     const handleFinalizeMonth = async () => {
         try {
-            const res = await axios.get(`${API_URL}/scheduler/month-stats?month=${currentMonth}`);
+            const res = await axios.get(`${API_URL} /scheduler/month - stats ? month = ${currentMonth} `);
             setMonthStats(res.data);
             setShowMonthSummary(true);
         } catch (error) {
@@ -80,7 +85,7 @@ function MakeupSchedulerPage() {
 
     const fetchTarget = async () => {
         try {
-            const res = await axios.get(`${API_URL}/scheduler/targets/${currentMonth}`);
+            const res = await axios.get(`${API_URL} /scheduler/targets / ${currentMonth} `);
             setMonthlyTarget(res.data.target);
         } catch (error) {
             console.error("Error fetching target", error);
@@ -89,7 +94,7 @@ function MakeupSchedulerPage() {
 
     const fetchPlayers = async () => {
         try {
-            const res = await axios.get(`${API_URL}/scheduler/players`);
+            const res = await axios.get(`${API_URL} /scheduler/players`);
             setPlayers(res.data);
         } catch (error) {
             console.error("Error fetching players", error);
@@ -98,7 +103,7 @@ function MakeupSchedulerPage() {
 
     const fetchClasses = async () => {
         try {
-            const res = await axios.get(`${API_URL}/scheduler/classes?month=${currentMonth}`);
+            const res = await axios.get(`${API_URL} /scheduler/classes ? month = ${currentMonth} `);
             setClasses(res.data);
         } catch (error) {
             console.error("Error fetching classes", error);
@@ -128,9 +133,11 @@ function MakeupSchedulerPage() {
 
             payload.enrollments = finalEnrollments;
 
+            await axios.post(`${API_URL} /scheduler/players`, payload);
+            setShowAddPlayer(false);
             await axios.post(`${API_URL}/scheduler/players`, payload);
             setShowAddPlayer(false);
-            setNewPlayer({ name: '', level: 1, default_days: [], enrollments: [''] });
+            setNewPlayer({ name: '', level: 1, default_days: [], has_subscription: false, enrollments: [''] });
             fetchPlayers();
             fetchClasses();
         } catch (error) {
@@ -140,7 +147,7 @@ function MakeupSchedulerPage() {
     const handleDeletePlayer = async (playerId) => {
         if (!confirm("Are you sure you want to delete this player? This will also remove them from all scheduled classes.")) return;
         try {
-            await axios.delete(`${API_URL}/scheduler/players/${playerId}`);
+            await axios.delete(`${API_URL} /scheduler/players / ${playerId} `);
             if (selectedPlayer === playerId) setSelectedPlayer(null);
             fetchPlayers();
             fetchClasses();
@@ -163,7 +170,7 @@ function MakeupSchedulerPage() {
                     };
                 });
 
-            await axios.post(`${API_URL}/scheduler/players/${selectedPlayer}/enroll`, { enrollments: finalEnrollments });
+            await axios.post(`${API_URL} /scheduler/players / ${selectedPlayer}/enroll`, { enrollments: finalEnrollments });
             setShowEnrollModal(false);
             setEnrollExisting({ enrollments: [''] });
             fetchClasses();
@@ -212,6 +219,40 @@ function MakeupSchedulerPage() {
             console.error("Error adding class", error);
             alert("Failed to create class(es)");
         }
+    };
+
+    // Stats Logic
+    const getStats = () => {
+        const totalStudents = players.length;
+        const students2xWeek = players.filter(p => (p.default_days || []).length >= 2).length;
+        const subscribers = players.filter(p => p.has_subscription).length;
+        return { totalStudents, students2xWeek, subscribers };
+    };
+
+    const handleDownloadStatsPDF = () => {
+        const stats = getStats();
+        const doc = new jsPDF();
+
+        const monthName = new Date(currentMonth + '-02').toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+        doc.setFontSize(22);
+        doc.text(`Student Statistics`, 14, 20);
+        doc.setFontSize(14);
+        doc.text(`Month: ${monthName}`, 14, 30);
+
+        autoTable(doc, {
+            startY: 40,
+            head: [['Metric', 'Count']],
+            body: [
+                ['Total Students', stats.totalStudents],
+                ['2x/Week Plans', stats.students2xWeek],
+                ['Active Subscriptions', stats.subscribers]
+            ],
+            theme: 'grid',
+            headStyles: { fillColor: [52, 152, 219], textColor: 255 },
+            alternateRowStyles: { fillColor: [245, 245, 245] }
+        });
+
+        doc.save(`Student_Stats_${currentMonth}.pdf`);
     };
 
     const toggleStudentInClass = (id) => {
@@ -522,6 +563,42 @@ function MakeupSchedulerPage() {
     const sortedDates = Object.keys(groupedClasses).sort();
 
     console.log("MakeupSchedulerPage Rendering...");
+    // PDF Download Handler
+    const handleDownloadPDF = () => {
+        const doc = new jsPDF();
+
+        // Title
+        const monthName = new Date(currentMonth + '-02').toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+        doc.setFontSize(18);
+        doc.text(`Month Summary: ${monthName}`, 14, 20);
+
+        // Table Data
+        const tableBody = players.sort((a, b) => a.name.localeCompare(b.name)).map(player => {
+            const monthlyAttendance = classes.filter(c => c.attendance?.[player.id] === 'present').length;
+            const targetMet = monthlyTarget > 0 && monthlyAttendance >= monthlyTarget;
+            return [
+                player.name,
+                `Level ${player.level}`,
+                targetMet ? 'Yes' : 'No',
+                monthlyAttendance.toString(),
+                player.makeup_credits.toString()
+            ];
+        });
+
+        // Generate Table
+        autoTable(doc, {
+            startY: 30,
+            head: [['Student', 'Level', `Target Met (${monthlyTarget})`, 'Attended', 'Makeup Credits']],
+            body: tableBody,
+            theme: 'grid',
+            headStyles: { fillColor: [41, 128, 185], textColor: 255 },
+            alternateRowStyles: { fillColor: [245, 245, 245] }
+        });
+
+        // Save
+        doc.save(`Month_Summary_${currentMonth}.pdf`);
+    };
+
     return (
         <div className="min-h-screen bg-gray-900 text-white p-8">
             <div className="max-w-7xl mx-auto space-y-8">
@@ -567,6 +644,13 @@ function MakeupSchedulerPage() {
                                 <Trash2 size={16} />
                             </button>
                             <button
+                                onClick={() => setShowStatsModal(true)}
+                                className="bg-purple-600 hover:bg-purple-500 px-3 py-2 rounded-lg flex items-center gap-2"
+                                title="View Statistics"
+                            >
+                                <Users size={18} />
+                            </button>
+                            <button
                                 onClick={() => setShowAddPlayer(true)}
                                 className="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg flex items-center gap-2"
                             >
@@ -605,6 +689,16 @@ function MakeupSchedulerPage() {
                                 >
                                     {[1, 2, 3, 4, 5].map(l => <option key={l} value={l}>Level {l}</option>)}
                                 </select>
+                            </div>
+                            <div className="mb-3 flex items-center gap-2">
+                                <input
+                                    type="checkbox"
+                                    id="newSubscription"
+                                    checked={newPlayer.has_subscription}
+                                    onChange={e => setNewPlayer({ ...newPlayer, has_subscription: e.target.checked })}
+                                    className="w-4 h-4 rounded border-gray-500 bg-gray-900"
+                                />
+                                <label htmlFor="newSubscription" className="text-sm text-gray-300">Has Subscription</label>
                             </div>
 
                             <div className="mb-3">
@@ -991,6 +1085,16 @@ function MakeupSchedulerPage() {
                                         value={editingPlayer.makeup_credits !== undefined ? editingPlayer.makeup_credits : 0}
                                         onChange={e => setEditingPlayer({ ...editingPlayer, makeup_credits: parseInt(e.target.value) })}
                                     />
+                                </div>
+                                <div className="mb-3 flex items-center gap-2">
+                                    <input
+                                        type="checkbox"
+                                        id="editSubscription"
+                                        checked={editingPlayer.has_subscription}
+                                        onChange={e => setEditingPlayer({ ...editingPlayer, has_subscription: e.target.checked })}
+                                        className="w-4 h-4 rounded border-gray-500 bg-gray-900"
+                                    />
+                                    <label htmlFor="editSubscription" className="text-sm text-gray-300">Has Subscription</label>
                                 </div>
 
                                 {/* Class Enrollments */}
@@ -1521,220 +1625,214 @@ function MakeupSchedulerPage() {
                     </div>
                 </div>
 
-            </div>
-
-            {/* Month Summary Modal */}
-            {showMonthSummary && (
-                <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-[70] p-8">
-                    <div className="bg-gray-800 rounded-2xl w-full max-w-4xl border border-gray-700 flex flex-col max-h-full">
-                        <div className="p-6 border-b border-gray-700 flex justify-between items-center">
-                            <div>
-                                <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                                    Month Summary: {new Date(currentMonth + '-02').toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                {/* Stats Modal */}
+                {showStatsModal && (
+                    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-[70] p-8">
+                        <div className="bg-gray-800 rounded-2xl w-full max-w-lg border border-gray-700 flex flex-col">
+                            <div className="p-6 border-b border-gray-700 flex justify-between items-center bg-gray-800/80 rounded-t-2xl">
+                                <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                                    <Users className="text-purple-400" /> Student Statistics
                                 </h2>
-                                <p className="text-sm text-gray-400 mt-1">Review attendance and rollover credits.</p>
+                                <button onClick={() => setShowStatsModal(false)} className="text-gray-400 hover:text-white">
+                                    <XCircle size={24} />
+                                </button>
                             </div>
-                            <button onClick={() => setShowMonthSummary(false)} className="text-gray-400 hover:text-white">
-                                <XCircle size={24} />
-                            </button>
-                        </div>
 
-                        <div className="p-6 overflow-y-auto flex-1">
-                            <table className="w-full text-left border-collapse">
-                                <thead>
-                                    <tr className="text-gray-400 text-sm border-b border-gray-700">
-                                        <th className="p-3">Student</th>
-                                        <th className="p-3 text-center">Level</th>
-                                        <th className="p-3 text-center">Target ({monthlyTarget})</th>
-                                        <th className="p-3 text-center">Classes Attended</th>
-                                        <th className="p-3 text-center">Credits Carrying Over</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="text-sm">
-                                    {players.sort((a, b) => a.name.localeCompare(b.name)).map(player => {
-                                        const monthlyAttendance = classes.filter(c => c.attendance?.[player.id] === 'present').length;
-                                        const targetMet = monthlyTarget > 0 && monthlyAttendance >= monthlyTarget;
+                            <div className="p-8 space-y-6">
+                                <div className="bg-gray-900/50 p-4 rounded-xl border border-gray-700 flex justify-between items-center">
+                                    <span className="text-gray-300 text-lg">Total Students</span>
+                                    <span className="text-3xl font-bold text-white">{getStats().totalStudents}</span>
+                                </div>
+                                <div className="bg-gray-900/50 p-4 rounded-xl border border-gray-700 flex justify-between items-center">
+                                    <span className="text-gray-300 text-lg">Twice a Week (2x)</span>
+                                    <span className="text-3xl font-bold text-blue-400">{getStats().students2xWeek}</span>
+                                </div>
+                                <div className="bg-gray-900/50 p-4 rounded-xl border border-gray-700 flex justify-between items-center">
+                                    <span className="text-gray-300 text-lg">Active Subscriptions</span>
+                                    <span className="text-3xl font-bold text-green-400">{getStats().subscribers}</span>
+                                </div>
+                            </div>
 
-                                        return (
-                                            <tr key={player.id} className="border-b border-gray-700/50 hover:bg-gray-700/20">
-                                                <td className="p-3 font-medium text-white">{player.name}</td>
-                                                <td className="p-3 text-center">
-                                                    <span className={`text-[10px] px-1.5 py-0.5 rounded border ${getLevelColor(player.level)}`}>
-                                                        L{player.level}
-                                                    </span>
-                                                </td>
-                                                <td className="p-3 text-center">
-                                                    {targetMet ? <span className="text-xl">🏆</span> : <span className="text-gray-600">-</span>}
-                                                </td>
-                                                <td className="p-3 text-center font-bold text-blue-300">
-                                                    {monthlyAttendance}
-                                                </td>
-                                                <td className="p-3 text-center">
-                                                    {player.makeup_credits > 0 ? (
-                                                        <span className="bg-orange-900/40 text-orange-400 px-2 py-1 rounded font-bold">
-                                                            {player.makeup_credits} Credit{player.makeup_credits !== 1 ? 's' : ''}
-                                                        </span>
-                                                    ) : (
-                                                        <span className="text-gray-600">0</span>
-                                                    )}
-                                                </td>
-                                            </tr>
-                                        );
-                                    })}
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div className="p-6 border-t border-gray-700 bg-gray-800/50 rounded-b-2xl">
-                            <div className="flex justify-end gap-3">
+                            <div className="p-6 border-t border-gray-700 bg-gray-800/50 rounded-b-2xl flex justify-end gap-3">
                                 <button
-                                    onClick={() => setShowMonthSummary(false)}
-                                    className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-lg font-bold"
+                                    onClick={handleDownloadStatsPDF}
+                                    className="flex items-center gap-2 bg-purple-600 hover:bg-purple-500 text-white px-5 py-2.5 rounded-lg font-bold shadow-lg shadow-purple-900/20"
                                 >
-                                    Close Summary
+                                    <Download size={18} /> Download PDF
+                                </button>
+                                <button
+                                    onClick={() => setShowStatsModal(false)}
+                                    className="bg-gray-700 hover:bg-gray-600 text-white px-5 py-2.5 rounded-lg font-bold"
+                                >
+                                    Close
                                 </button>
                             </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )}
+
+
+
+            </div >
+
             {/* Month Summary Modal */}
-            {showMonthSummary && (
-                <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-                    <div className="bg-gray-800 rounded-xl shadow-2xl border border-gray-700 w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
-                        <div className="p-4 border-b border-gray-700 flex justify-between items-center bg-gray-900/50">
-                            <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                                <CheckCircle className="text-yellow-500" />
-                                Month Finalization: {new Date(currentMonth + '-02').toLocaleString('en-US', { month: 'long', year: 'numeric' })}
-                            </h3>
-                            <button onClick={() => setShowMonthSummary(false)} className="text-gray-400 hover:text-white">
-                                <XCircle size={20} />
-                            </button>
-                        </div>
+            {
+                showMonthSummary && (
+                    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-[70] p-8">
+                        <div className="bg-gray-800 rounded-2xl w-full max-w-4xl border border-gray-700 flex flex-col max-h-full">
+                            <div className="p-6 border-b border-gray-700 flex justify-between items-center">
+                                <div>
+                                    <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                                        Month Summary: {new Date(currentMonth + '-02').toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                                    </h2>
+                                    <p className="text-sm text-gray-400 mt-1">Review attendance and rollover credits.</p>
+                                </div>
+                                <button onClick={() => setShowMonthSummary(false)} className="text-gray-400 hover:text-white">
+                                    <XCircle size={24} />
+                                </button>
+                            </div>
 
-                        <div className="p-4 overflow-y-auto">
-                            <table className="w-full text-left border-collapse">
-                                <thead>
-                                    <tr className="text-gray-400 text-sm border-b border-gray-700">
-                                        <th className="p-2 font-medium">Student</th>
-                                        <th className="p-2 font-medium text-center">Classes Attended</th>
-                                        <th className="p-2 font-medium text-center text-red-400">Missed Classes</th>
-                                        <th className="p-2 font-medium text-center">Target</th>
-                                        <th className="p-2 font-medium text-center">Status</th>
-                                        <th className="p-2 font-medium text-center text-blue-400">Rollover Credits</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="text-sm">
-                                    {monthStats.map(stat => (
-                                        <tr key={stat.student_id} className="border-b border-gray-700/50 hover:bg-gray-700/30">
-                                            <td className="p-2 font-medium text-white">{stat.name}</td>
-                                            <td className="p-2 text-center text-gray-300">{stat.attended}</td>
-                                            <td className="p-2 text-center text-red-400 font-bold">{stat.absences}</td>
-                                            <td className="p-2 text-center text-gray-500">{stat.target}</td>
-                                            <td className="p-2 text-center">
-                                                {stat.achieved ? (
-                                                    <span className="inline-flex items-center gap-1 text-yellow-500 bg-yellow-500/10 px-2 py-0.5 rounded-full text-xs border border-yellow-500/20">
-                                                        🏆 Achieved
-                                                    </span>
-                                                ) : (
-                                                    <span className="text-gray-600">-</span>
-                                                )}
-                                            </td>
-                                            <td className="p-2 text-center">
-                                                {stat.rollover_credits > 0 ? (
-                                                    <span className="text-blue-400 font-bold">+{stat.rollover_credits}</span>
-                                                ) : (
-                                                    <span className="text-gray-600">0</span>
-                                                )}
-                                            </td>
+                            <div className="p-6 overflow-y-auto flex-1">
+                                <table className="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr className="text-gray-400 text-sm border-b border-gray-700">
+                                            <th className="p-3">Student</th>
+                                            <th className="p-3 text-center">Level</th>
+                                            <th className="p-3 text-center">Target ({monthlyTarget})</th>
+                                            <th className="p-3 text-center">Classes Attended</th>
+                                            <th className="p-3 text-center">Credits Carrying Over</th>
                                         </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
+                                    </thead>
+                                    <tbody className="text-sm">
+                                        {players.sort((a, b) => a.name.localeCompare(b.name)).map(player => {
+                                            const monthlyAttendance = classes.filter(c => c.attendance?.[player.id] === 'present').length;
+                                            const targetMet = monthlyTarget > 0 && monthlyAttendance >= monthlyTarget;
 
-                        <div className="p-4 border-t border-gray-700 bg-gray-900/30 flex justify-end">
-                            <button
-                                onClick={() => setShowMonthSummary(false)}
-                                className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded text-white text-sm font-medium transition-colors"
-                            >
-                                Close Report
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            )}
+                                            return (
+                                                <tr key={player.id} className="border-b border-gray-700/50 hover:bg-gray-700/20">
+                                                    <td className="p-3 font-medium text-white">{player.name}</td>
+                                                    <td className="p-3 text-center">
+                                                        <span className={`text-[10px] px-1.5 py-0.5 rounded border ${getLevelColor(player.level)}`}>
+                                                            L{player.level}
+                                                        </span>
+                                                    </td>
+                                                    <td className="p-3 text-center">
+                                                        {targetMet ? <span className="text-xl">🏆</span> : <span className="text-gray-600">-</span>}
+                                                    </td>
+                                                    <td className="p-3 text-center font-bold text-blue-300">
+                                                        {monthlyAttendance}
+                                                    </td>
+                                                    <td className="p-3 text-center">
+                                                        {player.makeup_credits > 0 ? (
+                                                            <span className="bg-orange-900/40 text-orange-400 px-2 py-1 rounded font-bold">
+                                                                {player.makeup_credits} Credit{player.makeup_credits !== 1 ? 's' : ''}
+                                                            </span>
+                                                        ) : (
+                                                            <span className="text-gray-600">0</span>
+                                                        )}
+                                                    </td>
+                                                </tr>
+                                            );
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
 
-            {/* Quick Makeup Selection Modal */}
-            {showQuickBooking && (
-                <div className="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-[70] p-4">
-                    <div className="bg-gray-800 rounded-3xl shadow-2xl border-2 border-orange-500/30 w-full max-w-xl max-h-[85vh] overflow-hidden flex flex-col">
-                        <div className="p-6 border-b border-gray-700 bg-gray-900/50 flex justify-between items-center">
-                            <div>
-                                <div className="flex items-center gap-3">
-                                    <div className="bg-orange-600 p-2 rounded-xl shadow-lg shadow-orange-950/40">
-                                        <Plus className="text-white" size={24} strokeWidth={3} />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter">Quick Book Makeup</h3>
-                                        <p className="text-orange-400 font-bold text-xs">Matching Level {players.find(p => p.id === selectedPlayer)?.level} for {players.find(p => p.id === selectedPlayer)?.name}</p>
-                                    </div>
+                            <div className="p-6 border-t border-gray-700 bg-gray-800/50 rounded-b-2xl">
+                                <div className="flex justify-end gap-3">
+                                    <button
+                                        onClick={handleDownloadPDF}
+                                        className="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg font-bold"
+                                    >
+                                        <Download size={18} /> Download PDF
+                                    </button>
+                                    <button
+                                        onClick={() => setShowMonthSummary(false)}
+                                        className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-lg font-bold"
+                                    >
+                                        Close Summary
+                                    </button>
                                 </div>
                             </div>
-                            <button
-                                onClick={() => setShowQuickBooking(false)}
-                                className="bg-gray-800 hover:bg-gray-700 p-2 rounded-full text-gray-400 hover:text-white transition-all"
-                            >
-                                <XCircle size={32} />
-                            </button>
-                        </div>
-
-                        <div className="p-6 overflow-y-auto flex-1 space-y-4">
-                            {makeupOptions.length === 0 ? (
-                                <div className="text-center py-20 bg-gray-900/40 rounded-3xl border-2 border-dashed border-gray-700">
-                                    <XCircle size={48} className="mx-auto text-gray-600 mb-4" />
-                                    <p className="text-xl font-bold text-gray-400">No available slots found.</p>
-                                    <p className="text-sm text-gray-600 mt-2">Try checking other months or regular classes.</p>
-                                </div>
-                            ) : (
-                                <div className="grid grid-cols-1 gap-4">
-                                    <p className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em]">Select an available slot:</p>
-                                    {makeupOptions.map(opt => (
-                                        <div
-                                            key={opt.id}
-                                            onClick={() => handleBookMakeup(opt.id, true)}
-                                            className="bg-gray-900 border-2 border-gray-700 p-5 rounded-2xl hover:border-orange-500 hover:bg-orange-500/5 transition-all cursor-pointer group flex justify-between items-center"
-                                        >
-                                            <div className="flex items-center gap-4">
-                                                <div className="bg-gray-800 p-3 rounded-xl border border-gray-700 group-hover:border-orange-500/50">
-                                                    <Clock className="text-blue-400 group-hover:text-orange-400" size={20} />
-                                                </div>
-                                                <div>
-                                                    <span className="text-2xl font-black text-white block leading-none">{opt.time}</span>
-                                                    <span className="text-sm font-bold text-gray-500 group-hover:text-gray-400">
-                                                        {new Date(opt.date + 'T00:00:00').toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div className="text-right">
-                                                <div className="text-[10px] font-black text-gray-600 uppercase mb-1">Coach {opt.coach || 'Unassigned'}</div>
-                                                <button className="bg-blue-600 p-2 rounded-xl text-white font-black text-xs group-hover:bg-orange-600 transition-colors">
-                                                    BOOK NOW
-                                                </button>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="p-4 bg-gray-900/80 border-t border-gray-700 text-center">
-                            <p className="text-[10px] text-gray-500">Only classes with matching levels and available spots are shown here.</p>
                         </div>
                     </div>
-                </div>
-            )}
-        </div>
+                )
+            }
+            {/* Month Summary Modal */}
+
+
+            {/* Quick Makeup Selection Modal */}
+            {
+                showQuickBooking && (
+                    <div className="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-[70] p-4">
+                        <div className="bg-gray-800 rounded-3xl shadow-2xl border-2 border-orange-500/30 w-full max-w-xl max-h-[85vh] overflow-hidden flex flex-col">
+                            <div className="p-6 border-b border-gray-700 bg-gray-900/50 flex justify-between items-center">
+                                <div>
+                                    <div className="flex items-center gap-3">
+                                        <div className="bg-orange-600 p-2 rounded-xl shadow-lg shadow-orange-950/40">
+                                            <Plus className="text-white" size={24} strokeWidth={3} />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter">Quick Book Makeup</h3>
+                                            <p className="text-orange-400 font-bold text-xs">Matching Level {players.find(p => p.id === selectedPlayer)?.level} for {players.find(p => p.id === selectedPlayer)?.name}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button
+                                    onClick={() => setShowQuickBooking(false)}
+                                    className="bg-gray-800 hover:bg-gray-700 p-2 rounded-full text-gray-400 hover:text-white transition-all"
+                                >
+                                    <XCircle size={32} />
+                                </button>
+                            </div>
+
+                            <div className="p-6 overflow-y-auto flex-1 space-y-4">
+                                {makeupOptions.length === 0 ? (
+                                    <div className="text-center py-20 bg-gray-900/40 rounded-3xl border-2 border-dashed border-gray-700">
+                                        <XCircle size={48} className="mx-auto text-gray-600 mb-4" />
+                                        <p className="text-xl font-bold text-gray-400">No available slots found.</p>
+                                        <p className="text-sm text-gray-600 mt-2">Try checking other months or regular classes.</p>
+                                    </div>
+                                ) : (
+                                    <div className="grid grid-cols-1 gap-4">
+                                        <p className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em]">Select an available slot:</p>
+                                        {makeupOptions.map(opt => (
+                                            <div
+                                                key={opt.id}
+                                                onClick={() => handleBookMakeup(opt.id, true)}
+                                                className="bg-gray-900 border-2 border-gray-700 p-5 rounded-2xl hover:border-orange-500 hover:bg-orange-500/5 transition-all cursor-pointer group flex justify-between items-center"
+                                            >
+                                                <div className="flex items-center gap-4">
+                                                    <div className="bg-gray-800 p-3 rounded-xl border border-gray-700 group-hover:border-orange-500/50">
+                                                        <Clock className="text-blue-400 group-hover:text-orange-400" size={20} />
+                                                    </div>
+                                                    <div>
+                                                        <span className="text-2xl font-black text-white block leading-none">{opt.time}</span>
+                                                        <span className="text-sm font-bold text-gray-500 group-hover:text-gray-400">
+                                                            {new Date(opt.date + 'T00:00:00').toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div className="text-right">
+                                                    <div className="text-[10px] font-black text-gray-600 uppercase mb-1">Coach {opt.coach || 'Unassigned'}</div>
+                                                    <button className="bg-blue-600 p-2 rounded-xl text-white font-black text-xs group-hover:bg-orange-600 transition-colors">
+                                                        BOOK NOW
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className="p-4 bg-gray-900/80 border-t border-gray-700 text-center">
+                                <p className="text-[10px] text-gray-500">Only classes with matching levels and available spots are shown here.</p>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+        </div >
     );
 }
 
